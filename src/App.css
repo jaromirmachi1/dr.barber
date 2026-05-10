@@ -208,7 +208,7 @@ main section:not(#hero):not(.marquee-strip) {
   display: grid;
   line-height: 1.04;
   font-family: "Cabinet Grotesk", Inter, sans-serif;
-  font-size: clamp(4.25rem, 7.2vw, 7.4rem);
+  font-size: clamp(5.25rem, 9vw, 9rem);
   font-weight: 500;
   letter-spacing: -0.075em;
   transform: translateY(1.5vh);
@@ -434,54 +434,115 @@ main section:not(#hero):not(.marquee-strip) {
   aspect-ratio: 1.52;
 }
 
-.about-section {
+main section.about-section:not(#hero):not(.marquee-strip) {
   display: grid;
-  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1fr);
-  gap: clamp(3rem, 7vw, 7rem);
-  align-items: end;
-  border-top: 1px solid rgba(13, 13, 13, 0.14);
-}
-
-.about-image {
-  min-height: clamp(420px, 52vw, 640px);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  border-top: 1px solid rgba(13, 13, 13, 0.12);
   background:
-    linear-gradient(180deg, rgba(13, 13, 13, 0.12), rgba(13, 13, 13, 0.58)),
-    radial-gradient(
-      circle at 52% 18%,
-      rgba(245, 240, 232, 0.38),
-      transparent 13%
-    ),
-    linear-gradient(
-      115deg,
-      transparent 46%,
-      rgba(200, 169, 110, 0.24) 47%,
-      transparent 52%
-    ),
-    linear-gradient(150deg, #191715, #302720 54%, #080808);
-  filter: saturate(0.78);
-  box-shadow: inset 0 0 0 1px rgba(200, 169, 110, 0.32);
+    radial-gradient(circle at 82% 18%, rgba(200, 169, 110, 0.14), transparent 22rem),
+    linear-gradient(180deg, rgba(245, 240, 232, 0.98), rgba(245, 240, 232, 0.94));
+  color: #0d0d0d;
 }
 
-.about-section article {
-  max-width: 52rem;
+.about-label,
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  color: rgba(13, 13, 13, 0.5);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-label span:last-child {
+  grid-column: 3;
+  text-align: right;
 }
 
 .about-section h2 {
-  margin: 0 0 1.4rem;
+  max-width: 12ch;
+  margin: 0;
+  font-family: "Times New Roman", serif;
+  font-size: clamp(5.2rem, 17vw, 17rem);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: -0.085em;
+  text-transform: uppercase;
+}
+
+.about-editorial {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: end;
+}
+
+.about-story,
+.about-owner {
+  max-width: 44rem;
+}
+
+.about-lede {
+  margin: 0 0 clamp(1.4rem, 2vw, 2rem);
   font-family: "Cabinet Grotesk", Inter, sans-serif;
-  font-size: clamp(3rem, 7vw, 7.2rem);
+  font-size: clamp(1.6rem, 3.5vw, 4.3rem);
   font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.075em;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
 }
 
 .about-section p {
-  max-width: 39rem;
-  font-size: clamp(1rem, 1.25vw, 1.18rem);
-  line-height: 1.75;
+  margin: 0;
+  color: rgba(13, 13, 13, 0.68);
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  line-height: 1.72;
 }
 
-.services-section h2,
+.about-owner {
+  padding-top: clamp(1.25rem, 2vw, 2rem);
+  border-top: 1px solid rgba(13, 13, 13, 0.18);
+}
+
+.about-owner span {
+  color: rgba(13, 13, 13, 0.48);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-owner h3 {
+  margin: 0.8rem 0 1rem;
+  font-family: "Cabinet Grotesk", Inter, sans-serif;
+  font-size: clamp(2rem, 4vw, 5rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.07em;
+}
+
+.about-details {
+  list-style: none;
+  margin: clamp(1rem, 2vw, 2rem) 0 0;
+  padding: clamp(1.1rem, 1.8vw, 1.5rem) 0 0;
+  border-top: 1px solid rgba(13, 13, 13, 0.16);
+}
+
+.about-details li {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.about-details strong {
+  color: #0d0d0d;
+  font-family: "Cabinet Grotesk", Inter, sans-serif;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+
+.services-heading h2,
 .testimonials-section h2,
 .booking-cta h2 {
   margin: 0;
@@ -492,75 +553,93 @@ main section:not(#hero):not(.marquee-strip) {
   letter-spacing: -0.075em;
 }
 
-.services-section,
+main section.services-section:not(#hero):not(.marquee-strip),
 .testimonials-section,
 .booking-cta {
   border-top: 1px solid rgba(13, 13, 13, 0.14);
 }
 
-.service-grid {
-  margin-top: clamp(3rem, 6vw, 5.5rem);
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  border-top: 1px solid rgba(200, 169, 110, 0.42);
+main section.services-section:not(#hero):not(.marquee-strip) {
   background:
-    linear-gradient(135deg, rgba(200, 169, 110, 0.1), transparent 34%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(245, 240, 232, 0.03) 0,
-      rgba(245, 240, 232, 0.03) 1px,
-      transparent 1px,
-      transparent 10px
-    ),
-    #0d0d0d;
-}
-
-.service-card {
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-right: 1px solid rgba(200, 169, 110, 0.24);
+    radial-gradient(circle at 18% 12%, rgba(200, 169, 110, 0.13), transparent 24rem),
+    linear-gradient(180deg, rgba(13, 13, 13, 0.98), rgba(13, 13, 13, 0.96));
   color: #f5f0e8;
-  padding: 1.7rem 1.5rem 1.55rem;
 }
 
-.service-card:last-child {
-  border-right: 0;
+.services-heading {
+  display: grid;
+  justify-items: center;
+  gap: clamp(0.7rem, 1.2vw, 1rem);
+  text-align: center;
 }
 
-.service-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(200, 169, 110, 0.86);
-  border-radius: 50%;
-  position: relative;
-}
-
-.service-icon::after {
-  content: "";
-  position: absolute;
-  inset: 50% auto auto 50%;
-  width: 14px;
-  height: 1px;
-  background: #c8a96e;
-  transform: translate(-50%, -50%) rotate(-35deg);
-}
-
-.service-card h3 {
-  margin: 2.8rem 0 0.55rem;
-  font-size: clamp(1.55rem, 2vw, 2.25rem);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-}
-
-.service-card p {
-  margin: 0;
-  color: rgba(200, 169, 110, 0.82);
-  font-size: 0.86rem;
-  letter-spacing: 0.08em;
+.services-heading span {
+  color: rgba(200, 169, 110, 0.78);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.services-heading h2 {
+  font-family: "Times New Roman", serif;
+  font-size: clamp(5rem, 15vw, 15rem);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: -0.08em;
+  text-transform: none;
+}
+
+.service-list {
+  margin: clamp(2.4rem, 5vw, 5rem) auto 0;
+  width: min(100%, 78rem);
+  border-top: 1px solid rgba(245, 240, 232, 0.28);
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: minmax(16rem, 28rem) minmax(4rem, 1fr) auto;
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+  padding: clamp(1rem, 1.8vw, 1.55rem) 0;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+}
+
+.service-price {
+  min-width: 5rem;
+  color: rgba(245, 240, 232, 0.78);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.service-copy h3 {
+  margin: 0;
+  font-family: "Cabinet Grotesk", Inter, sans-serif;
+  font-size: clamp(1.65rem, 2.8vw, 3.35rem);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.service-copy p {
+  max-width: 30rem;
+  margin: 0.4rem 0 0;
+  color: rgba(245, 240, 232, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.service-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 169, 110, 0.1),
+    rgba(245, 240, 232, 0.42)
+  );
 }
 
 .testimonial-grid {
@@ -814,7 +893,7 @@ main section:not(#hero):not(.marquee-strip) {
   }
 
   .hero-main h1 {
-    font-size: clamp(3.2rem, 16vw, 5.4rem);
+    font-size: clamp(3.75rem, 18vw, 6.25rem);
     letter-spacing: -0.065em;
   }
 
@@ -846,7 +925,6 @@ main section:not(#hero):not(.marquee-strip) {
   }
 
   .about-section,
-  .service-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
@@ -855,20 +933,61 @@ main section:not(#hero):not(.marquee-strip) {
     gap: 2rem;
   }
 
-  .about-image {
-    min-height: 420px;
+  .about-label,
+  .about-details,
+  .about-editorial {
+    grid-template-columns: 1fr;
   }
 
-  .service-card,
+  .about-label span:last-child {
+    grid-column: auto;
+    text-align: left;
+  }
+
+  .about-section h2 {
+    font-size: clamp(4.4rem, 24vw, 8rem);
+  }
+
+  .about-details {
+    gap: 1.4rem;
+  }
+
   .testimonial-grid blockquote {
     min-height: auto;
     border-right: 0;
     border-bottom: 1px solid rgba(13, 13, 13, 0.16);
   }
 
-  .service-card:last-child,
   .testimonial-grid blockquote:last-child {
     border-bottom: 0;
+  }
+
+  .services-heading {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .services-heading h2 {
+    font-size: clamp(4.5rem, 24vw, 8rem);
+  }
+
+  .service-row {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .service-rule {
+    display: none;
+  }
+
+  .service-price {
+    min-width: auto;
+    padding-top: 0.25rem;
+  }
+
+  .service-copy p {
+    font-size: 0.78rem;
   }
 
   .booking-cta {
