@@ -122,7 +122,7 @@
   color: #0d0d0d;
 }
 
-main section {
+main section:not(#hero):not(.marquee-strip) {
   position: relative;
   padding: clamp(6rem, 10vw, 10rem) 7vw;
   background:
@@ -131,23 +131,41 @@ main section {
   overflow: hidden;
 }
 
-.hero-section {
+.hero-block {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 22% 24%, rgba(200, 169, 110, 0.16), transparent 22rem),
+    radial-gradient(circle at 76% 72%, rgba(13, 13, 13, 0.08), transparent 26rem),
+    #f5f0e8;
+  color: #0d0d0d;
+}
+
+.hero-main {
   position: relative;
   min-height: 100vh;
   display: grid;
   place-items: center;
   justify-content: center;
-  background:
-    radial-gradient(circle at 22% 24%, rgba(200, 169, 110, 0.16), transparent 22rem),
-    radial-gradient(circle at 76% 72%, rgba(13, 13, 13, 0.08), transparent 26rem),
-    #f5f0e8;
   padding: 0 7vw;
   overflow: hidden;
+  background: transparent;
   --cursor-x: 50%;
   --cursor-y: 50%;
 }
 
-.hero-section h1 {
+.hero-marquee {
+  background: transparent;
+  overflow: hidden;
+}
+
+.marquee-row--hero {
+  overflow: hidden;
+  padding: clamp(1.15rem, 2.4vw, 2rem) 0;
+  background: transparent;
+}
+
+.hero-main h1 {
   position: relative;
   z-index: 2;
   margin: 0;
@@ -245,9 +263,8 @@ main section {
 }
 
 .marquee-strip {
-  background: #f5f0e8;
-  color: #0d0d0d;
-  border-block: 1px solid rgba(13, 13, 13, 0.16);
+  background: transparent;
+  color: #f5f0e8;
   overflow: hidden;
   padding: 0;
 }
@@ -258,8 +275,13 @@ main section {
 }
 
 .marquee-gallery-zone {
-  border-top: 1px solid rgba(13, 13, 13, 0.16);
-  background: #0d0d0d;
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(1rem, 2vw, 1.75rem);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(200, 169, 110, 0.14), transparent 24rem),
+    radial-gradient(circle at 80% 74%, rgba(200, 169, 110, 0.1), transparent 28rem),
+    #0d0d0d;
 }
 
 .marquee-track {
@@ -273,6 +295,7 @@ main section {
 }
 
 .marquee-track span {
+  flex-shrink: 0;
   padding-right: clamp(2.2rem, 5vw, 5rem);
   font-family: 'Cabinet Grotesk', Inter, sans-serif;
   font-size: clamp(2.25rem, 5.2vw, 5.8rem);
@@ -284,31 +307,23 @@ main section {
 }
 
 .marquee-row--inverted {
+  position: relative;
+  z-index: 1;
   overflow: hidden;
   padding: clamp(1.15rem, 2.4vw, 2rem) 0;
   background: transparent;
 }
 
-.marquee-gallery-rule {
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: rgba(245, 240, 232, 0.12);
-  flex-shrink: 0;
-}
-
 .marquee-row--inverted .marquee-track span {
   color: #f5f0e8;
+  -webkit-text-fill-color: #f5f0e8;
 }
 
 .marquee-gallery {
   position: relative;
   min-height: clamp(760px, 118vw, 1120px);
-  background:
-    radial-gradient(circle at 18% 28%, rgba(200, 169, 110, 0.14), transparent 24rem),
-    radial-gradient(circle at 80% 74%, rgba(200, 169, 110, 0.1), transparent 28rem),
-    transparent;
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -686,7 +701,7 @@ main section {
 }
 
 @media (max-width: 900px) {
-  main section {
+  main section:not(#hero):not(.marquee-strip) {
     padding: 5rem 1.25rem;
   }
 
@@ -698,7 +713,7 @@ main section {
     width: 120px;
   }
 
-  .hero-section {
+  .hero-main {
     justify-items: start;
   }
 
@@ -706,7 +721,7 @@ main section {
     display: none;
   }
 
-  .hero-section h1 {
+  .hero-main h1 {
     font-size: clamp(3.2rem, 16vw, 5.4rem);
     letter-spacing: -0.065em;
   }

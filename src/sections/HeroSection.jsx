@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useMarqueePhysics } from '../hooks/useMarqueePhysics'
 import galleryInterior from '../assets/unnamed.jpg'
 import galleryDetail from '../assets/unnamed-2.jpg'
 import galleryWide from '../assets/2026-04-30.jpg'
@@ -19,6 +20,7 @@ const heroCursorImages = [
 ]
 
 export default function HeroSection({ t }) {
+  const heroMarqueeRef = useMarqueePhysics()
   const [heroActive, setHeroActive] = useState(false)
   const [heroFrame, setHeroFrame] = useState(0)
   const heroFrameRef = useRef(0)
@@ -45,29 +47,40 @@ export default function HeroSection({ t }) {
   }
 
   return (
-    <section
-      id="hero"
-      className="hero-section"
-      onPointerMove={handleHeroPointerMove}
-      onPointerLeave={() => setHeroActive(false)}
-    >
+    <section id="hero" className="hero-block">
       <div
-        className={`hero-cursor-gallery ${heroActive ? 'is-visible' : ''}`}
-        aria-hidden="true"
+        className="hero-main"
+        onPointerMove={handleHeroPointerMove}
+        onPointerLeave={() => setHeroActive(false)}
       >
-        {heroCursorImages.map((item, index) => (
-          <div
-            className={`hero-frame ${heroFrame === index ? 'is-active' : ''}`}
-            key={item.src}
-          >
-            <img src={item.src} alt="" />
-          </div>
-        ))}
+        <div
+          className={`hero-cursor-gallery ${heroActive ? 'is-visible' : ''}`}
+          aria-hidden="true"
+        >
+          {heroCursorImages.map((item, index) => (
+            <div
+              className={`hero-frame ${heroFrame === index ? 'is-active' : ''}`}
+              key={item.src}
+            >
+              <img src={item.src} alt="" />
+            </div>
+          ))}
+        </div>
+        <h1>
+          <span>{t.hero.titleTop}</span>
+          <span>{t.hero.titleBottom}</span>
+        </h1>
       </div>
-      <h1>
-        <span>{t.hero.titleTop}</span>
-        <span>{t.hero.titleBottom}</span>
-      </h1>
+
+      <div ref={heroMarqueeRef} className="hero-marquee">
+        <div className="marquee-row marquee-row--hero">
+          <div className="marquee-track">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <span key={index}>{t.marquee}</span>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

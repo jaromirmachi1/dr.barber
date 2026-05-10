@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 
-export function useMarqueePhysics() {
+export function useMarqueePhysics(options = {}) {
+  const { reverse = false } = options
   const stripRef = useRef(null)
 
   useEffect(() => {
@@ -25,10 +26,19 @@ export function useMarqueePhysics() {
       targetBoost *= 0.9
 
       tracks.forEach((track, index) => {
-        const direction = index === 0 ? -1 : 1
+        const direction =
+          tracks.length >= 2 ? (index === 0 ? -1 : 1) : reverse ? 1 : -1
         const speed = baseSpeed + currentBoost * scrollBoostGain
-        positions[index] = (positions[index] + speed * delta) % 50
-        track.style.transform = `translate3d(${direction * positions[index]}%, 0, 0)`
+        const loopPx = track.scrollWidth / 2
+        if (!loopPx) return
+
+        positions[index] += (speed * delta * loopPx) / 50
+        positions[index] =
+          ((positions[index] % loopPx) + loopPx) % loopPx
+
+        const x =
+          direction > 0 ? positions[index] - loopPx : -positions[index]
+        track.style.transform = `translate3d(${x}px, 0, 0)`
       })
 
       rafId = requestAnimationFrame(animate)
@@ -41,13 +51,16 @@ export function useMarqueePhysics() {
       targetBoost = Math.min(1, targetBoost + Math.min(80, dy) * 0.006)
     }
 
-    rafId = requestAnimationFrame(animate)
+    const kickoff = () => {
+      rafId = requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(() => requestAnimationFrame(kickoff))
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(rafId)
     }
-  }, [])
+  }, [reverse])
 
   return stripRef
 }
