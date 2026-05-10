@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { siteContent } from './content/siteContent'
+import { useHeaderSurfaceTheme } from './hooks/useHeaderSurfaceTheme'
 import SiteHeader from './sections/SiteHeader'
 import HeroSection from './sections/HeroSection'
 import MarqueeSection from './sections/MarqueeSection'
@@ -13,6 +14,7 @@ import SiteFooter from './sections/SiteFooter'
 function App() {
   const [locale, setLocale] = useState('cs')
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerOnDark = useHeaderSurfaceTheme()
   const t = siteContent[locale]
 
   useEffect(() => {
@@ -27,6 +29,7 @@ function App() {
         setLocale={setLocale}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
+        headerOnDark={headerOnDark}
       />
 
       <main>

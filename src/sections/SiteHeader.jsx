@@ -6,9 +6,12 @@ export default function SiteHeader({
   setLocale,
   menuOpen,
   setMenuOpen,
+  headerOnDark,
 }) {
   return (
-    <header className="site-header">
+    <header
+      className={`site-header ${headerOnDark ? 'site-header--on-dark' : ''}`}
+    >
       <a href="#hero" className="brand-logo" aria-label="Doktor Barber home">
         <img src={logo} alt="Doktor Barber logo" />
       </a>

@@ -1,3 +1,4 @@
+import { useGalleryParallax } from '../hooks/useGalleryParallax'
 import { useMarqueePhysics } from '../hooks/useMarqueePhysics'
 import galleryInterior from '../assets/unnamed.jpg'
 import galleryDetail from '../assets/unnamed-2.jpg'
@@ -23,6 +24,7 @@ const galleryImages = [
 
 export default function MarqueeSection({ t }) {
   const stripRef = useMarqueePhysics({ reverse: true })
+  const galleryRef = useGalleryParallax()
 
   return (
     <section
@@ -39,6 +41,7 @@ export default function MarqueeSection({ t }) {
           </div>
         </div>
         <div
+          ref={galleryRef}
           className="marquee-gallery"
           aria-label="Doktor Barber interior gallery"
         >
