@@ -1,4 +1,5 @@
 import logo from '../assets/curves-logo.png'
+import UiTherapyCredit from '../components/UiTherapyCredit'
 
 const menuLinks = [
   { href: '#about', key: 'about' },
@@ -105,7 +106,7 @@ export default function SiteHeader({
             </div>
 
             <div className="menu-panel__footer">
-              <span>{t.menu.locationLabel}</span>
+              <UiTherapyCredit className="uityherapy-credit--menu" tone="black" />
               <div className="language-switch">
                 <span>{t.languageLabel}</span>
                 <button
