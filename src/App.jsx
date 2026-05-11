@@ -13,8 +13,7 @@ import AboutSection from "./sections/AboutSection";
 import ServicesSection from "./sections/ServicesSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import LocationSection from "./sections/LocationSection";
-import BookingSection from "./sections/BookingSection";
-import SiteFooter from "./sections/SiteFooter";
+import BookingClosure from "./sections/BookingClosure";
 
 function App() {
   const [locale, setLocale] = useState("cs");
@@ -63,10 +62,9 @@ function App() {
         <ServicesSection t={t} />
         <TestimonialsSection t={t} />
         <LocationSection t={t} />
-        <BookingSection t={t} />
       </main>
 
-      <SiteFooter t={t} />
+      <BookingClosure t={t} />
 
       <a
         href="#booking"
