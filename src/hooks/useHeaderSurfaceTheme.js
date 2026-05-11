@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
 /** Viewport Y (px from top) — band where the fixed header sits over content */
-const PROBE_Y = 52
+const HEADER_PROBE_Y = 52
+/** Distance from viewport bottom to sample behind the floating BOOK US control */
+const BOOK_FLOATING_PROBE_FROM_BOTTOM = 52
 
-function surfaceBehindHeader() {
-  const probe = PROBE_Y
+function getSurfaceThemeAt(probeY) {
   const sections = [
     document.getElementById('hero'),
     document.querySelector('.marquee-strip'),
@@ -14,8 +15,9 @@ function surfaceBehindHeader() {
 
   for (const section of sections) {
     const rect = section.getBoundingClientRect()
-    if (rect.top < probe && rect.bottom > probe) {
+    if (rect.top < probeY && rect.bottom > probeY) {
       if (section.classList.contains('marquee-strip')) return 'dark'
+      if (section.classList.contains('services-section')) return 'dark'
       if (
         section.classList.contains('booking-cta') &&
         section.classList.contains('booking-marble')
@@ -30,12 +32,12 @@ function surfaceBehindHeader() {
   return 'light'
 }
 
-export function useHeaderSurfaceTheme() {
+function useSurfaceTheme(probeY) {
   const [onDark, setOnDark] = useState(false)
 
   useEffect(() => {
     const update = () => {
-      setOnDark(surfaceBehindHeader() === 'dark')
+      setOnDark(getSurfaceThemeAt(probeY()) === 'dark')
     }
 
     update()
@@ -45,7 +47,19 @@ export function useHeaderSurfaceTheme() {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [])
+  }, [probeY])
 
   return onDark
+}
+
+const headerProbeY = () => HEADER_PROBE_Y
+const bookFloatingProbeY = () =>
+  window.innerHeight - BOOK_FLOATING_PROBE_FROM_BOTTOM
+
+export function useHeaderSurfaceTheme() {
+  return useSurfaceTheme(headerProbeY)
+}
+
+export function useBookFloatingSurfaceTheme() {
+  return useSurfaceTheme(bookFloatingProbeY)
 }

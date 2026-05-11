@@ -1,30 +1,30 @@
-import { useGalleryParallax } from '../hooks/useGalleryParallax'
-import { useMarqueePhysics } from '../hooks/useMarqueePhysics'
-import galleryInterior from '../assets/unnamed.jpg'
-import galleryDetail from '../assets/unnamed-2.jpg'
-import galleryWide from '../assets/2026-04-30.jpg'
+import { useGalleryParallax } from "../hooks/useGalleryParallax";
+import { useMarqueePhysics } from "../hooks/useMarqueePhysics";
+import galleryInterior from "../assets/unnamed.jpg";
+import galleryDetail from "../assets/unnamed-2.jpg";
+import galleryWide from "../assets/2026-04-30.jpg";
 
 const galleryImages = [
   {
     src: galleryInterior,
-    alt: 'Doktor Barber interior with stone texture and barber chair',
-    className: 'is-primary',
+    alt: "Doktor Barber interior with stone texture and barber chair",
+    className: "is-primary",
   },
   {
     src: galleryDetail,
-    alt: 'Warm wood and gold-lit barber station detail',
-    className: 'is-left',
+    alt: "Warm wood and gold-lit barber station detail",
+    className: "is-left",
   },
   {
     src: galleryWide,
-    alt: 'Wide view of the Doktor Barber interior and chairs',
-    className: 'is-right',
+    alt: "Wide view of the Doktor Barber interior and chairs",
+    className: "is-right",
   },
-]
+];
 
 export default function MarqueeSection({ t }) {
-  const stripRef = useMarqueePhysics({ reverse: true })
-  const galleryRef = useGalleryParallax()
+  const stripRef = useMarqueePhysics({ reverse: true });
+  const galleryRef = useGalleryParallax();
 
   return (
     <section
@@ -56,5 +56,5 @@ export default function MarqueeSection({ t }) {
         </div>
       </div>
     </section>
-  )
+  );
 }

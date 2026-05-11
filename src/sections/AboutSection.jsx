@@ -30,5 +30,5 @@ export default function AboutSection({ t }) {
         ))}
       </ul>
     </section>
-  )
+  );
 }

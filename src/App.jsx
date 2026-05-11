@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { siteContent } from './content/siteContent'
-import { useHeaderSurfaceTheme } from './hooks/useHeaderSurfaceTheme'
+import {
+  useBookFloatingSurfaceTheme,
+  useHeaderSurfaceTheme,
+} from './hooks/useHeaderSurfaceTheme'
 import { useLenisSmoothScroll } from './hooks/useLenisSmoothScroll'
 import SiteHeader from './sections/SiteHeader'
 import HeroSection from './sections/HeroSection'
@@ -17,11 +20,29 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   useLenisSmoothScroll()
   const headerOnDark = useHeaderSurfaceTheme()
+  const bookOnDark = useBookFloatingSurfaceTheme()
   const t = siteContent[locale]
 
   useEffect(() => {
     document.documentElement.lang = locale
   }, [locale])
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleEscape)
+    }
+  }, [menuOpen])
 
   return (
     <div className="page">
@@ -45,7 +66,10 @@ function App() {
 
       <SiteFooter t={t} />
 
-      <a href="#booking" className="book-floating">
+      <a
+        href="#booking"
+        className={`book-floating ${bookOnDark ? 'book-floating--on-dark' : ''}`}
+      >
         BOOK US
       </a>
     </div>
