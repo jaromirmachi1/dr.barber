@@ -12,6 +12,7 @@ import MarqueeSection from './sections/MarqueeSection'
 import AboutSection from './sections/AboutSection'
 import ServicesSection from './sections/ServicesSection'
 import TestimonialsSection from './sections/TestimonialsSection'
+import LocationSection from './sections/LocationSection'
 import BookingSection from './sections/BookingSection'
 import SiteFooter from './sections/SiteFooter'
 
@@ -61,6 +62,7 @@ function App() {
         <AboutSection t={t} />
         <ServicesSection t={t} />
         <TestimonialsSection t={t} />
+        <LocationSection t={t} />
         <BookingSection t={t} />
       </main>
 

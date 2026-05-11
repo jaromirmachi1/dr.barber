@@ -4,6 +4,7 @@ export const siteContent = {
       about: "O nás",
       services: "Služby",
       testimonials: "Reference",
+      location: "Lokace",
       booking: "Rezervace",
     },
     menu: {
@@ -19,7 +20,7 @@ export const siteContent = {
         instagram: "Nové střihy, mood a zákulisí",
         rate: "Sdílej zkušenost na Google",
       },
-      locationLabel: "Brno / Grooming atelier",
+      locationLabel: "Jarmily Kurandové 8 / Brno",
     },
     hero: {
       titleTop: "Čistý orientální",
@@ -34,20 +35,20 @@ export const siteContent = {
       "Rituál · Preciznost · Dědictví · Křeslo · Střih · Ručně · Podle tradice ·",
     about: {
       kicker: "O nás",
-      established: "Brněnský grooming dům",
-      title: "Barbering okem doktora.",
+      established: "Brněnské holičství",
+      title: "Střih okem doktora.",
       lede: "Doktor Barber je pánská grooming adresa pro klienty, kteří chtějí přesnost, klid a styl bez zbytečného hluku.",
       shopBody:
         "Ateliér stojí na konzultaci, proporcích a rituálu. Každý fade, kontura vousů i mokré holení začíná čtením tvaru obličeje, struktury vlasů a denního rytmu klienta. Výsledek je čistý, nositelný a připravený na schůzku, studio i noční město.",
-      ownerLabel: "Profil majitele",
+      ownerLabel: "Majitel Salónu",
       ownerName: "Thaer Awawda",
       ownerBody:
         "Majitel je fiktivní barber s posedlostí řemeslem, hudební kulturou a vizuální disciplínou. Jeho přístup kombinuje chirurgickou přesnost, LA streetwear cit a servis, který působí osobně od první konzultace po poslední detail.",
       detailsLabel: "Detaily o Doktor Barber",
       details: [
         { label: "Zaměření", value: "Střihy, vousy, rituální péče" },
-        { label: "Atmosféra", value: "Luxusní street grooming" },
-        { label: "Lokace", value: "Brno, Česká republika" },
+        { label: "Atmosféra", value: "Luxusní orientální holičství" },
+        { label: "Lokace", value: "Brno-Královo Pole, Česká Republika" },
       ],
     },
     services: {
@@ -92,24 +93,24 @@ export const siteContent = {
       ],
     },
     testimonials: {
-      kicker: "Word of mouth",
+      kicker: "Klientské",
       title: "Reference",
       list: [
         {
           quote:
-            "Nejlepší fade v Brně. Precizní, klidný přístup a žádný spěch. Poprvé jsem měl pocit, že střih vzniká jako součást celého stylu, ne jen jako rychlá služba.",
-          name: "Matěj K.",
+            "Perfektní služby pro všechny věkové kategorie, profesionální, osobní přístup. Luxus prostředí a jedinečný design, Doporučujeme!",
+          name: "Petra S.",
           detail: "Signature Cut / pravidelný klient",
         },
         {
           quote:
-            "Atmosféra působí jako backstage před fashion show. Ticho, detail, dobrá hudba a výsledek, který drží i po několika týdnech.",
-          name: "Adam V.",
+            "Pro mě je to nejlepší holič, jakého jsem kdy navštívil, a budu k němu chodit navždy. Kouzelné prsty",
+          name: "Moumen A.",
           detail: "Beard Architecture",
         },
         {
           quote:
-            "Doktor Barber je můj měsíční reset. Styl, servis, konzistence. Přijdu unavený a odcházím připravený na město.",
+            "Velmi příjemný osobní přístup, profesionální čistá práce, moc doporučuji! Taková péče je skvělá i jako dárek na voucher",
           name: "David R.",
           detail: "Doctor Ritual",
         },
@@ -135,7 +136,7 @@ export const siteContent = {
       metaLabel: "Souhrn referencí Doktor Barber",
       paginationLabel: "Přepínání referencí",
       meta: [
-        { label: "Google mood", value: "4.9 / 5" },
+        { label: "Google Hodnocení", value: "4.9 / 5" },
         { label: "Repeat clients", value: "82%" },
         { label: "Signature", value: "Detail first" },
       ],
@@ -144,8 +145,33 @@ export const siteContent = {
       title: "Připraven na novou kapitolu svého stylu?",
       cta: "BOOK US",
     },
+    location: {
+      kicker: "Lokace",
+      title: "Najdeš nás v Králově Poli.",
+      description:
+        "Salon Doktor Barber je na adrese Jarmily Kurandové 8, kousek od hlavních tras v Brně-Králově Poli.",
+      addressLabel: "Adresa",
+      address: "Jarmily Kurandové 8, 612 00 Brno-Královo Pole",
+      phoneLabel: "Telefon",
+      phone: "+420 774 034 077",
+      phoneHref: "+420774034077",
+      directionsCta: "Otevřít mapu",
+      callCta: "Zavolat",
+      contactsLabel: "Kontakty salonu Doktor Barber",
+      galleryLabel: "Fotografie salonu Doktor Barber",
+      imageAlt: {
+        interior: "Interiér salonu Doktor Barber s barberským křeslem",
+        detail: "Detail stanice salonu Doktor Barber v teplém světle",
+        wide: "Široký pohled na interiér a křesla salonu Doktor Barber",
+      },
+      mapLabel: "Mapa salonu Doktor Barber",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Jarmily%20Kurandov%C3%A9%208%2C%20612%2000%20Brno-Kr%C3%A1lovo%20Pole",
+      mapEmbed:
+        "https://www.google.com/maps?q=Jarmily%20Kurandov%C3%A9%208%2C%20612%2000%20Brno-Kr%C3%A1lovo%20Pole&output=embed",
+    },
     footer: {
-      address: "Doktor Barber, Vinohradská 112, Brno",
+      address: "Doktor Barber, Jarmily Kurandové 8, Brno",
       socials: ["Instagram", "TikTok", "Spotify"],
     },
     languageLabel: "Jazyk",
@@ -155,6 +181,7 @@ export const siteContent = {
       about: "About",
       services: "Services",
       testimonials: "Testimonials",
+      location: "Location",
       booking: "Booking",
     },
     menu: {
@@ -170,7 +197,7 @@ export const siteContent = {
         instagram: "Fresh cuts, mood, and backstage",
         rate: "Share your experience on Google",
       },
-      locationLabel: "Brno / Grooming atelier",
+      locationLabel: "Jarmily Kurandové 8 / Brno",
     },
     hero: {
       titleTop: "Pure Orient",
@@ -185,25 +212,25 @@ export const siteContent = {
       "The Ritual · Precision · Heritage · The Chair · The Cut · By Hand · By Tradition ·",
     about: {
       kicker: "About us",
-      established: "Brno grooming house",
-      title: "Barbering with a doctors eye.",
+      established: "Brno barbershop",
+      title: "A cut with a doctor's eye.",
       lede: "Doktor Barber is a mens grooming address for clients who want precision, calm, and style without unnecessary noise.",
       shopBody:
         "The atelier is built around consultation, proportion, and ritual. Every fade, beard line, and wet shave starts by reading face shape, hair structure, and the rhythm of the clients day. The result is clean, wearable, and ready for meetings, studios, and late nights.",
-      ownerLabel: "Owner profile",
+      ownerLabel: "Salon owner",
       ownerName: "Thaer Awawda",
       ownerBody:
         "The owner is a fictional barber with an obsession for craft, music culture, and visual discipline. His approach blends surgical precision, LA streetwear energy, and service that feels personal from the first consultation to the final detail.",
       detailsLabel: "About Doktor Barber details",
       details: [
         { label: "Focus", value: "Haircuts, beards, ritual care" },
-        { label: "Mood", value: "Luxury street grooming" },
-        { label: "Location", value: "Brno, Czech Republic" },
+        { label: "Mood", value: "Luxury oriental barbershop" },
+        { label: "Location", value: "Brno-Královo Pole, Czech Republic" },
       ],
     },
     services: {
-      kicker: "Procedures",
-      title: "Treatments",
+      kicker: "Price list",
+      title: "Procedures",
       list: [
         {
           name: "Signature Cut",
@@ -242,24 +269,24 @@ export const siteContent = {
       ],
     },
     testimonials: {
-      kicker: "Word of mouth",
+      kicker: "Client",
       title: "Testimonials",
       list: [
         {
           quote:
-            "Best fade in Brno. Precise, calm execution with zero rush. For the first time, my haircut felt like part of a full visual direction, not just a quick service.",
-          name: "Matej K.",
+            "Perfect service for all ages, with a professional and personal approach. A luxurious environment and one-of-a-kind design. Highly recommended!",
+          name: "Petra S.",
           detail: "Signature Cut / regular client",
         },
         {
           quote:
-            "The atmosphere feels like backstage before a fashion show. Quiet, detailed, good music, and a result that still holds weeks later.",
-          name: "Adam V.",
+            "For me, he's the best barber I've ever visited, and I'll keep coming back forever. Magic hands.",
+          name: "Moumen A.",
           detail: "Beard Architecture",
         },
         {
           quote:
-            "Doktor Barber is my monthly reset. Style, service, consistency. I arrive tired and leave ready for the city.",
+            "A very pleasant, personal approach and professional, clean work. Highly recommend! Care like this is great as a voucher gift too.",
           name: "David R.",
           detail: "Doctor Ritual",
         },
@@ -285,7 +312,7 @@ export const siteContent = {
       metaLabel: "Doktor Barber testimonial summary",
       paginationLabel: "Testimonials pagination",
       meta: [
-        { label: "Google mood", value: "4.9 / 5" },
+        { label: "Google rating", value: "4.9 / 5" },
         { label: "Repeat clients", value: "82%" },
         { label: "Signature", value: "Detail first" },
       ],
@@ -294,8 +321,33 @@ export const siteContent = {
       title: "Ready for the next chapter of your style?",
       cta: "BOOK US",
     },
+    location: {
+      kicker: "Location",
+      title: "Find us in Královo Pole.",
+      description:
+        "Doktor Barber salon is located at Jarmily Kurandové 8, close to the main routes through Brno-Královo Pole.",
+      addressLabel: "Address",
+      address: "Jarmily Kurandové 8, 612 00 Brno-Královo Pole",
+      phoneLabel: "Phone",
+      phone: "+420 774 034 077",
+      phoneHref: "+420774034077",
+      directionsCta: "Open map",
+      callCta: "Call",
+      contactsLabel: "Doktor Barber salon contacts",
+      galleryLabel: "Doktor Barber salon photos",
+      imageAlt: {
+        interior: "Doktor Barber salon interior with a barber chair",
+        detail: "Warm-lit detail of the Doktor Barber salon station",
+        wide: "Wide view of the Doktor Barber salon interior and chairs",
+      },
+      mapLabel: "Doktor Barber salon map",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Jarmily%20Kurandov%C3%A9%208%2C%20612%2000%20Brno-Kr%C3%A1lovo%20Pole",
+      mapEmbed:
+        "https://www.google.com/maps?q=Jarmily%20Kurandov%C3%A9%208%2C%20612%2000%20Brno-Kr%C3%A1lovo%20Pole&output=embed",
+    },
     footer: {
-      address: "Doktor Barber, Vinohradska 112, Brno",
+      address: "Doktor Barber, Jarmily Kurandové 8, Brno",
       socials: ["Instagram", "TikTok", "Spotify"],
     },
     languageLabel: "Language",

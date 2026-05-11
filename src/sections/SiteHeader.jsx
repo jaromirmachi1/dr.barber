@@ -4,6 +4,7 @@ const menuLinks = [
   { href: '#about', key: 'about' },
   { href: '#services', key: 'services' },
   { href: '#testimonials', key: 'testimonials' },
+  { href: '#location', key: 'location' },
   { href: '#booking', key: 'booking' },
 ]
 
