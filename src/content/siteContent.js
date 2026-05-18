@@ -23,8 +23,8 @@ export const siteContent = {
       locationLabel: "Jarmily Kurandové 8 / Brno",
     },
     hero: {
-      titleTop: "Čistý orientální",
-      titleBottom: "střih.",
+      titleTop: "Holičství a péče",
+      titleBottom: "z daleka.",
       subtitle:
         "Pánský grooming ateliér propojující precizní barberské řemeslo, rituál pohody a vizuální identitu Doktor Barber.",
       cta: "Rezervovat termín",
@@ -53,42 +53,80 @@ export const siteContent = {
     },
     services: {
       kicker: "Ceník",
-      title: "Procedury",
+      title: "Služby",
       list: [
         {
-          name: "Signature Cut",
-          description: "Pánský střih, konzultace a styling do každého dne.",
-          price: "990 Kč",
+          group: "Střihy",
+          name: "Pánský střih",
+          description: "Konzultace, střih a závěrečný styling.",
+          price: "700 Kč",
         },
         {
-          name: "Beard Architecture",
-          description:
-            "Tvarování vousů, kontury a klidná příprava hot towel rituálem.",
-          price: "690 Kč",
+          group: "Střihy",
+          name: "Dětský střih do 10 let",
+          description: "Pro děti do 10 let včetně.",
+          price: "350 Kč",
         },
         {
-          name: "Doctor Ritual",
-          description:
-            "Střih, vousy, péče o pokožku a kompletní grooming reset.",
-          price: "1 490 Kč",
+          group: "Střihy",
+          name: "Dětský střih 10–14 let",
+          description: "Pro klienty ve věku od 10 do 14 let.",
+          price: "500 Kč",
         },
         {
-          name: "Clean Fade",
-          description:
-            "Precizní fade se siluetou nastavenou podle tvaru hlavy.",
-          price: "890 Kč",
+          group: "Úprava vousů",
+          name: "Úprava vousů",
+          description: "Strojek, kontury a doladění břitvou.",
+          price: "500 Kč",
         },
         {
-          name: "Wet Shave",
-          description:
-            "Klasické holení břitvou, napáření a uklidňující finish.",
-          price: "790 Kč",
+          group: "Úprava vousů",
+          name: "Úprava vousů a holení",
+          description: "Úprava vousů včetně holení s hot towel rituálem.",
+          price: "650 Kč",
         },
         {
-          name: "Color Refresh",
+          group: "Kombinované služby",
+          name: "Pánský střih + úprava vousů",
+          description: "Kompletní péče o vlasy i vousy v jedné návštěvě.",
+          price: "1 000 Kč",
+        },
+        {
+          group: "Kombinované služby",
+          name: "Pánský střih, vousy a holení",
           description:
-            "Jemné tónování vlasů nebo vousů pro čistý přirozený výsledek.",
-          price: "1 190 Kč",
+            "Střih, úprava vousů a holení s hot towel v jednom sezení.",
+          price: "1 250 Kč",
+        },
+        {
+          group: "Barvení vlasů",
+          name: "Barvení vlasů — stříbrná nebo šedá",
+          description: "Jednolitá stříbrná nebo šedá barva vlasů.",
+          price: "1 200 Kč",
+        },
+        {
+          group: "Barvení vlasů",
+          name: "Barvení vlasů — hnědá nebo černá",
+          description: "Jednolitá hnědá nebo černá barva vlasů.",
+          price: "1 000 Kč",
+        },
+        {
+          group: "Barvení vousů",
+          name: "Barvení vousů — stříbrná nebo šedá",
+          description: "Stříbrný nebo šedý odstín vousů.",
+          price: "800 Kč",
+        },
+        {
+          group: "Barvení vousů",
+          name: "Barvení vousů — černá nebo hnědá",
+          description: "Černý nebo hnědý odstín vousů.",
+          price: "300 Kč",
+        },
+        {
+          group: "Tónování",
+          name: "Tónování šedých vlasů — Re-Shade",
+          description: "Jemné sladění a pokrytí šedin metodou Re-Shade.",
+          price: "450 Kč",
         },
       ],
     },
@@ -146,10 +184,8 @@ export const siteContent = {
       cta: "BOOK US",
     },
     location: {
-      kicker: "Lokace",
-      title: "Najdeš nás v Králově Poli.",
-      description:
-        "Salon Doktor Barber je na adrese Jarmily Kurandové 8, kousek od hlavních tras v Brně-Králově Poli.",
+      kicker: "Naše",
+      title: "Lokace",
       addressLabel: "Adresa",
       address: "Jarmily Kurandové 8, 612 00 Brno-Královo Pole",
       phoneLabel: "Telefon",
@@ -200,8 +236,8 @@ export const siteContent = {
       locationLabel: "Jarmily Kurandové 8 / Brno",
     },
     hero: {
-      titleTop: "Pure Orient",
-      titleBottom: "Cut.",
+      titleTop: "Barbering and care",
+      titleBottom: "from afar.",
       subtitle:
         "A modern grooming atelier blending precision barber craft, restorative ritual, and the visual identity of Doktor Barber.",
       cta: "Book Appointment",
@@ -230,41 +266,80 @@ export const siteContent = {
     },
     services: {
       kicker: "Price list",
-      title: "Procedures",
+      title: "Services",
       list: [
         {
-          name: "Signature Cut",
-          description: "Mens cut, consultation, and daily-ready styling.",
-          price: "39 EUR",
+          group: "Haircuts",
+          name: "Men's haircut",
+          description: "Consultation, cut, and finishing styling.",
+          price: "700 Kč",
         },
         {
-          name: "Beard Architecture",
+          group: "Haircuts",
+          name: "Kids haircut up to 10",
+          description: "For children aged 10 and under.",
+          price: "350 Kč",
+        },
+        {
+          group: "Haircuts",
+          name: "Kids haircut 10–14",
+          description: "For clients aged 10 to 14.",
+          price: "500 Kč",
+        },
+        {
+          group: "Beard grooming",
+          name: "Beard trim",
+          description: "Clipper work, line-up, and razor detailing.",
+          price: "500 Kč",
+        },
+        {
+          group: "Beard grooming",
+          name: "Beard trim and shave",
+          description: "Beard grooming with a hot towel shave ritual.",
+          price: "650 Kč",
+        },
+        {
+          group: "Combined services",
+          name: "Men's haircut + beard trim",
+          description: "Full hair and beard care in one visit.",
+          price: "1 000 Kč",
+        },
+        {
+          group: "Combined services",
+          name: "Men's haircut, beard trim and shave",
           description:
-            "Beard shaping, clean lines, and calm hot towel preparation.",
-          price: "28 EUR",
+            "Haircut, beard grooming, and hot towel shave in one session.",
+          price: "1 250 Kč",
         },
         {
-          name: "Doctor Ritual",
-          description: "Cut, beard, skin care, and a complete grooming reset.",
-          price: "59 EUR",
+          group: "Hair coloring",
+          name: "Hair color — silver or grey",
+          description: "Solid silver or grey hair color.",
+          price: "1 200 Kč",
         },
         {
-          name: "Clean Fade",
-          description:
-            "Precision fade shaped around head form and personal rhythm.",
-          price: "35 EUR",
+          group: "Hair coloring",
+          name: "Hair color — brown or black",
+          description: "Solid brown or black hair color.",
+          price: "1 000 Kč",
         },
         {
-          name: "Wet Shave",
-          description:
-            "Classic razor shave with steam, prep, and a soothing finish.",
-          price: "31 EUR",
+          group: "Beard coloring",
+          name: "Beard color — silver or grey",
+          description: "Silver or grey beard tone.",
+          price: "800 Kč",
         },
         {
-          name: "Color Refresh",
-          description:
-            "Subtle hair or beard toning for a clean natural result.",
-          price: "47 EUR",
+          group: "Beard coloring",
+          name: "Beard color — black or brown",
+          description: "Black or brown beard tone.",
+          price: "300 Kč",
+        },
+        {
+          group: "Toning",
+          name: "Grey blending — Re-Shade",
+          description: "Subtle grey blending and coverage with Re-Shade.",
+          price: "450 Kč",
         },
       ],
     },
@@ -322,10 +397,8 @@ export const siteContent = {
       cta: "BOOK US",
     },
     location: {
-      kicker: "Location",
-      title: "Find us in Královo Pole.",
-      description:
-        "Doktor Barber salon is located at Jarmily Kurandové 8, close to the main routes through Brno-Královo Pole.",
+      kicker: "Our",
+      title: "Location",
       addressLabel: "Address",
       address: "Jarmily Kurandové 8, 612 00 Brno-Královo Pole",
       phoneLabel: "Phone",

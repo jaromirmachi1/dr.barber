@@ -19,7 +19,7 @@ const heroCursorImages = [
   },
 ]
 
-export default function HeroSection({ t }) {
+export default function HeroSection({ t, heroLogoRef }) {
   const heroMarqueeRef = useMarqueePhysics()
   const [heroActive, setHeroActive] = useState(false)
   const [heroFrame, setHeroFrame] = useState(0)
@@ -66,10 +66,17 @@ export default function HeroSection({ t }) {
             </div>
           ))}
         </div>
-        <h1>
-          <span>{t.hero.titleTop}</span>
-          <span>{t.hero.titleBottom}</span>
-        </h1>
+        <div className="hero-content">
+          <div
+            ref={heroLogoRef}
+            className="hero-logo-anchor"
+            aria-hidden="true"
+          />
+          <h1>
+            <span>{t.hero.titleTop}</span>
+            <span>{t.hero.titleBottom}</span>
+          </h1>
+        </div>
       </div>
 
       <div ref={heroMarqueeRef} className="hero-marquee">

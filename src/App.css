@@ -71,7 +71,32 @@
 .brand-logo img {
   width: clamp(128px, 15vw, 190px);
   height: auto;
+  transition:
+    filter 220ms ease,
+    opacity 180ms ease;
+}
+
+.brand-logo--hidden img {
+  opacity: 0;
+}
+
+.brand-logo-flyout {
+  position: fixed;
+  z-index: 22;
+  margin: 0;
+  line-height: 0;
+  transform: translateZ(0);
+}
+
+.brand-logo-flyout img {
+  display: block;
+  width: 100%;
+  height: auto;
   transition: filter 220ms ease;
+}
+
+.brand-logo-flyout--on-dark img {
+  filter: invert(1) brightness(1.06);
 }
 
 .menu-wrap {
@@ -459,9 +484,22 @@ main section:not(#hero):not(.marquee-strip) {
   background: transparent;
 }
 
-.hero-main h1 {
+.hero-content {
   position: relative;
   z-index: 2;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: clamp(0.25rem, 0.9vh, 0.65rem);
+}
+
+.hero-logo-anchor {
+  width: clamp(240px, 34vw, 420px);
+  aspect-ratio: 3.1 / 1;
+}
+
+.hero-main h1 {
+  position: relative;
   margin: 0;
   display: grid;
   line-height: 1.04;
@@ -469,7 +507,6 @@ main section:not(#hero):not(.marquee-strip) {
   font-size: clamp(5.25rem, 9vw, 9rem);
   font-weight: 500;
   letter-spacing: -0.075em;
-  transform: translateY(1.5vh);
   text-shadow: 0 1px 0 rgba(200, 169, 110, 0.18);
 }
 
@@ -735,15 +772,24 @@ main section.about-section:not(#hero):not(.marquee-strip) {
   text-align: right;
 }
 
-.about-section h2 {
-  max-width: 12ch;
+.about-section > h2,
+.services-heading h2,
+.testimonials-heading h2,
+.location-heading h2,
+.booking-cta h2 {
   margin: 0;
+  max-width: none;
   font-family: "Times New Roman", serif;
-  font-size: clamp(4.6rem, 14vw, 14rem);
+  font-size: clamp(4.4rem, 10.5vw, 10rem);
   font-weight: 400;
-  line-height: 0.78;
+  line-height: 0.82;
   letter-spacing: -0.085em;
   text-transform: uppercase;
+}
+
+.about-section > h2 {
+  max-width: min(10.5ch, 100%);
+  text-wrap: balance;
 }
 
 .about-editorial {
@@ -817,18 +863,6 @@ main section.about-section:not(#hero):not(.marquee-strip) {
   text-transform: none;
 }
 
-.services-heading h2,
-.testimonials-section h2,
-.location-heading h2,
-.booking-cta h2 {
-  margin: 0;
-  font-family: "Cabinet Grotesk", Inter, sans-serif;
-  font-size: clamp(3.4rem, 8vw, 8rem);
-  font-weight: 500;
-  line-height: 0.92;
-  letter-spacing: -0.075em;
-}
-
 main section.services-section:not(#hero):not(.marquee-strip),
 .testimonials-section,
 .location-section {
@@ -843,7 +877,7 @@ main section.services-section:not(#hero):not(.marquee-strip),
   border-top: 1px solid rgba(200, 169, 110, 0.24);
 }
 
-.booking-closure__background {
+.section-beams-background {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -851,12 +885,30 @@ main section.services-section:not(#hero):not(.marquee-strip),
   background: #070808;
 }
 
-.booking-closure__background::after {
+.section-beams-background::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(180deg, rgba(7, 8, 8, 0.34), rgba(7, 8, 8, 0.72));
+}
+
+.services-section .section-beams-background {
+  background: #0c0905;
+}
+
+.services-section .section-beams-background::after {
+  background:
+    radial-gradient(
+      circle at 44% 38%,
+      rgba(226, 185, 106, 0.24),
+      transparent 58%
+    ),
+    linear-gradient(180deg, rgba(16, 10, 4, 0.2), rgba(10, 7, 3, 0.78));
+}
+
+.services-section .section-beams-root {
+  filter: sepia(0.14) saturate(1.22) hue-rotate(-6deg);
 }
 
 .testimonials-section {
@@ -866,18 +918,20 @@ main section.services-section:not(#hero):not(.marquee-strip),
 }
 
 main section.services-section:not(#hero):not(.marquee-strip) {
+  isolation: isolate;
+  overflow: hidden;
   min-height: 100svh;
   display: grid;
   align-content: center;
   gap: clamp(2rem, 4vw, 4.5rem);
-  background:
-    radial-gradient(
-      circle at 18% 12%,
-      rgba(200, 169, 110, 0.13),
-      transparent 24rem
-    ),
-    linear-gradient(180deg, rgba(13, 13, 13, 0.98), rgba(13, 13, 13, 0.96));
+  background: transparent;
   color: #f5f0e8;
+}
+
+.services-section .services-heading,
+.services-section .service-list {
+  position: relative;
+  z-index: 1;
 }
 
 .services-heading {
@@ -888,25 +942,31 @@ main section.services-section:not(#hero):not(.marquee-strip) {
 }
 
 .services-heading span {
-  color: rgba(200, 169, 110, 0.78);
+  color: rgba(226, 185, 106, 0.86);
   font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.services-heading h2 {
-  font-family: "Times New Roman", serif;
-  font-size: clamp(5rem, 15vw, 15rem);
-  font-weight: 400;
-  line-height: 0.78;
-  letter-spacing: -0.08em;
-  text-transform: none;
 }
 
 .service-list {
   margin: 0 auto;
   width: min(100%, 78rem);
   border-top: 1px solid rgba(245, 240, 232, 0.28);
+}
+
+.service-group {
+  padding: clamp(1.35rem, 2.4vw, 2rem) 0 0.35rem;
+}
+
+.service-group span {
+  color: rgba(226, 185, 106, 0.86);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.service-group + .service-row {
+  padding-top: clamp(0.75rem, 1.4vw, 1rem);
 }
 
 .service-row {
@@ -951,7 +1011,7 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(200, 169, 110, 0.1),
+    rgba(226, 185, 106, 0.22),
     rgba(245, 240, 232, 0.42)
   );
 }
@@ -967,15 +1027,6 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   color: rgba(13, 13, 13, 0.48);
   font-size: 0.76rem;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.testimonials-heading h2 {
-  font-family: "Times New Roman", serif;
-  font-size: clamp(4.4rem, 10.5vw, 10rem);
-  font-weight: 400;
-  line-height: 0.82;
-  letter-spacing: -0.085em;
   text-transform: uppercase;
 }
 
@@ -1112,36 +1163,20 @@ main section.services-section:not(#hero):not(.marquee-strip) {
 }
 
 .location-heading {
-  display: grid;
-  grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr);
-  gap: clamp(1.5rem, 3vw, 4rem);
-  align-items: end;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(0.65rem, 1.6vw, 1.25rem);
+  min-width: 0;
 }
 
-.location-heading span {
+.location-heading-kicker {
+  flex-shrink: 0;
   color: rgba(13, 13, 13, 0.48);
   font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.location-heading h2 {
-  max-width: 10ch;
-  font-family: "Times New Roman", serif;
-  font-size: clamp(3.4rem, 7.8vw, 7.6rem);
-  font-weight: 400;
-  line-height: 0.86;
-  letter-spacing: -0.085em;
-  text-transform: uppercase;
-}
-
-.location-heading p {
-  grid-column: 2;
-  max-width: 38rem;
-  margin: 0;
-  color: rgba(13, 13, 13, 0.62);
-  font-size: clamp(0.95rem, 1.08vw, 1.08rem);
-  line-height: 1.62;
 }
 
 .location-grid {
@@ -1462,6 +1497,10 @@ main section.services-section:not(#hero):not(.marquee-strip) {
     display: none;
   }
 
+  .hero-logo-anchor {
+    width: clamp(200px, 58vw, 300px);
+  }
+
   .hero-main h1 {
     font-size: clamp(3.75rem, 18vw, 6.25rem);
     letter-spacing: -0.065em;
@@ -1499,7 +1538,6 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   .testimonial-panel,
   .testimonial-footer,
   .testimonial-meta,
-  .location-heading,
   .location-grid,
   .location-gallery {
     grid-template-columns: 1fr;
@@ -1520,8 +1558,12 @@ main section.services-section:not(#hero):not(.marquee-strip) {
     text-align: left;
   }
 
-  .about-section h2 {
-    font-size: clamp(3.9rem, 21vw, 7rem);
+  .about-section > h2,
+  .services-heading h2,
+  .testimonials-heading h2,
+  .location-heading h2,
+  .booking-cta h2 {
+    font-size: clamp(3.7rem, 18vw, 6.4rem);
   }
 
   .about-details {
@@ -1530,10 +1572,6 @@ main section.services-section:not(#hero):not(.marquee-strip) {
 
   .testimonials-heading {
     gap: 1rem;
-  }
-
-  .testimonials-heading h2 {
-    font-size: clamp(3.7rem, 18vw, 6.4rem);
   }
 
   .testimonials-section {
@@ -1557,17 +1595,7 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   }
 
   .location-heading {
-    gap: 1rem;
-  }
-
-  .location-heading h2,
-  .location-heading p {
-    grid-column: auto;
-  }
-
-  .location-heading h2 {
-    max-width: 9ch;
-    font-size: clamp(3.1rem, 14vw, 5.4rem);
+    gap: 0.65rem;
   }
 
   .location-gallery,
@@ -1595,10 +1623,6 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   .services-heading {
     justify-items: start;
     text-align: left;
-  }
-
-  .services-heading h2 {
-    font-size: clamp(4.5rem, 24vw, 8rem);
   }
 
   .service-row {
@@ -1651,7 +1675,8 @@ main section.services-section:not(#hero):not(.marquee-strip) {
   .menu-backdrop,
   .menu-panel,
   .menu-nav a,
-  .menu-action {
+  .menu-action,
+  .brand-logo-flyout {
     animation: none;
     transition: none;
   }

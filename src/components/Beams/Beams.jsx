@@ -50,8 +50,13 @@ function extendMaterial(BaseMaterial, cfg) {
   return mat;
 }
 
-const CanvasWrapper = ({ children }) => (
-  <Canvas dpr={[1, 2]} frameloop="always" className="beams-container">
+const CanvasWrapper = ({ children, active }) => (
+  <Canvas
+    className="beams-container"
+    dpr={[1, 1.35]}
+    frameloop={active ? 'always' : 'never'}
+    gl={{ antialias: false, powerPreference: 'high-performance', stencil: false }}
+  >
     {children}
   </Canvas>
 );
@@ -141,6 +146,8 @@ float cnoise(vec3 P){
 }
 `;
 
+const BEAM_HEIGHT_SEGMENTS = 44;
+
 const Beams = ({
   beamWidth = 2,
   beamHeight = 15,
@@ -149,7 +156,8 @@ const Beams = ({
   speed = 2,
   noiseIntensity = 1.75,
   scale = 0.2,
-  rotation = 0
+  rotation = 0,
+  active = true
 }) => {
   const meshRef = useRef(null);
   const beamMaterial = useMemo(
@@ -210,7 +218,7 @@ const Beams = ({
   );
 
   return (
-    <CanvasWrapper>
+    <CanvasWrapper active={active}>
       <group rotation={[0, 0, MathUtils.degToRad(rotation)]}>
         <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
         <DirLight color={lightColor} position={[0, 3, 10]} />
@@ -274,7 +282,7 @@ const MergedPlanes = forwardRef(({ material, width, count, height }, ref) => {
   const mesh = useRef(null);
   useImperativeHandle(ref, () => mesh.current);
   const geometry = useMemo(
-    () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
+    () => createStackedPlanesBufferGeometry(count, width, height, 0, BEAM_HEIGHT_SEGMENTS),
     [count, width, height]
   );
   useFrame((_, delta) => {

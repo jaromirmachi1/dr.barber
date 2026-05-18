@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import BrandLogoFlyout from "./components/BrandLogoFlyout";
+import { useHeroLogoFlyout } from "./hooks/useHeroLogoFlyout";
 import "./App.css";
 import { siteContent } from "./content/siteContent";
 import {
@@ -22,6 +24,14 @@ function App() {
   const headerOnDark = useHeaderSurfaceTheme();
   const bookOnDark = useBookFloatingSurfaceTheme();
   const t = siteContent[locale];
+  const heroLogoRef = useRef(null);
+  const headerLogoRef = useRef(null);
+  const { metrics, reducedMotion } = useHeroLogoFlyout({
+    heroAnchorRef: heroLogoRef,
+    headerAnchorRef: headerLogoRef,
+    menuOpen,
+  });
+  const logoVisible = reducedMotion || Boolean(metrics?.showHeaderLogo);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -47,16 +57,24 @@ function App() {
   return (
     <div className="page">
       <SiteHeader
+        ref={headerLogoRef}
         t={t}
         locale={locale}
         setLocale={setLocale}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
         headerOnDark={headerOnDark}
+        logoVisible={logoVisible}
+      />
+
+      <BrandLogoFlyout
+        metrics={metrics}
+        headerOnDark={headerOnDark}
+        reducedMotion={reducedMotion}
       />
 
       <main>
-        <HeroSection t={t} />
+        <HeroSection t={t} heroLogoRef={heroLogoRef} />
         <MarqueeSection t={t} />
         <AboutSection t={t} />
         <ServicesSection t={t} />

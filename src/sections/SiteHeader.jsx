@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import logo from '../assets/curves-logo.png'
 import UiTherapyCredit from '../components/UiTherapyCredit'
 
@@ -23,14 +24,18 @@ const menuActions = [
   },
 ]
 
-export default function SiteHeader({
-  t,
-  locale,
-  setLocale,
-  menuOpen,
-  setMenuOpen,
-  headerOnDark,
-}) {
+const SiteHeader = forwardRef(function SiteHeader(
+  {
+    t,
+    locale,
+    setLocale,
+    menuOpen,
+    setMenuOpen,
+    headerOnDark,
+    logoVisible = true,
+  },
+  headerLogoRef,
+) {
   const closeMenu = () => setMenuOpen(false)
 
   return (
@@ -40,8 +45,9 @@ export default function SiteHeader({
       }`}
     >
       <a
+        ref={headerLogoRef}
         href="#hero"
-        className="brand-logo"
+        className={`brand-logo ${logoVisible ? '' : 'brand-logo--hidden'}`}
         aria-label="Doktor Barber home"
         onClick={closeMenu}
       >
@@ -130,4 +136,6 @@ export default function SiteHeader({
       </div>
     </header>
   )
-}
+})
+
+export default SiteHeader

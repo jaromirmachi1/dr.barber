@@ -12,9 +12,8 @@ export default function LocationSection({ t }) {
   return (
     <section id="location" className="location-section" aria-labelledby="location-title">
       <div className="location-heading">
-        <span>{t.location.kicker}</span>
+        <span className="location-heading-kicker">{t.location.kicker}</span>
         <h2 id="location-title">{t.location.title}</h2>
-        <p>{t.location.description}</p>
       </div>
 
       <div className="location-grid">
