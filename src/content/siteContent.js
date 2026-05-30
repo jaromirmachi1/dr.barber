@@ -43,7 +43,7 @@ export const siteContent = {
       ownerLabel: "Majitel Salónu",
       ownerName: "Thaer Awawda",
       ownerBody:
-        "Majitel je fiktivní barber s posedlostí řemeslem, hudební kulturou a vizuální disciplínou. Jeho přístup kombinuje chirurgickou přesnost, LA streetwear cit a servis, který působí osobně od první konzultace po poslední detail.",
+        "Majitel salónu s posedlostí řemeslem a vizuální disciplínou. Jeho přístup kombinuje chirurgickou přesnost, cit a servis, který působí osobně od první konzultace po poslední detail.",
       detailsLabel: "Detaily o Doktor Barber",
       details: [
         { label: "Zaměření", value: "Střihy, vousy, rituální péče" },
@@ -182,8 +182,7 @@ export const siteContent = {
     gallery: {
       kicker: "Galerie",
       title: "Atmosféra salonu.",
-      lede:
-        "Detail, světlo a klid prostoru, ve kterém má každý střih svůj rytmus.",
+      lede: "Detail, světlo a klid prostoru, ve kterém má každý střih svůj rytmus.",
       ariaLabel: "Galerie fotografií salonu Doktor Barber",
       hint: "Scrollujte dolů pro průchod galerií",
       images: [
@@ -310,7 +309,7 @@ export const siteContent = {
       ownerLabel: "Salon owner",
       ownerName: "Thaer Awawda",
       ownerBody:
-        "The owner is a fictional barber with an obsession for craft, music culture, and visual discipline. His approach blends surgical precision, LA streetwear energy, and service that feels personal from the first consultation to the final detail.",
+        "The salon owner with an obsession for craft and visual discipline. His approach combines surgical precision, tact, and service that feels personal from the first consultation to the final detail.",
       detailsLabel: "About Doktor Barber details",
       details: [
         { label: "Focus", value: "Haircuts, beards, ritual care" },
@@ -449,8 +448,7 @@ export const siteContent = {
     gallery: {
       kicker: "Gallery",
       title: "The salon atmosphere.",
-      lede:
-        "Detail, light, and calm space where every cut has its own rhythm.",
+      lede: "Detail, light, and calm space where every cut has its own rhythm.",
       ariaLabel: "Doktor Barber salon photo gallery",
       hint: "Scroll down to move through the gallery",
       images: [

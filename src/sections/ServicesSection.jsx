@@ -13,7 +13,6 @@ export default function ServicesSection({ t }) {
         <SectionBeamsBackground preset={servicesBeamsPreset} />
       </div>
       <div className="services-heading">
-        <span>{t.services.kicker}</span>
         <h2 id="services-title">{t.services.title}</h2>
       </div>
 
