@@ -1,21 +1,31 @@
 import { useRef, useState } from 'react'
 import { useMarqueePhysics } from '../hooks/useMarqueePhysics'
-import galleryInterior from '../assets/unnamed.jpg'
-import galleryDetail from '../assets/unnamed-2.jpg'
-import galleryWide from '../assets/2026-04-30.jpg'
+import vyska2 from '../assets/gallery/vyska2.webp'
+import vyska3 from '../assets/gallery/vyska3.webp'
+import vyska4 from '../assets/gallery/vyska4.webp'
+import vyska5 from '../assets/gallery/vyska5.webp'
+import vyska6 from '../assets/gallery/vyska6.webp'
 
 const heroCursorImages = [
   {
-    src: galleryInterior,
-    alt: 'Doktor Barber interior with stone texture and barber chair',
+    src: vyska2,
+    alt: 'Doktor Barber — vertical salon interior',
   },
   {
-    src: galleryDetail,
-    alt: 'Warm wood and gold-lit barber station detail',
+    src: vyska3,
+    alt: 'Doktor Barber — barber station detail',
   },
   {
-    src: galleryWide,
-    alt: 'Wide view of the Doktor Barber interior and chairs',
+    src: vyska4,
+    alt: 'Doktor Barber — grooming space atmosphere',
+  },
+  {
+    src: vyska5,
+    alt: 'Doktor Barber — interior texture and light',
+  },
+  {
+    src: vyska6,
+    alt: 'Doktor Barber — salon portrait view',
   },
 ]
 

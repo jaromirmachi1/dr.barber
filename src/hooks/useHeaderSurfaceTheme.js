@@ -20,6 +20,7 @@ function getSurfaceThemeAt(probeY) {
     if (rect.top < probeY && rect.bottom > probeY) {
       if (section.classList.contains("marquee-strip")) return "dark";
       if (section.classList.contains("services-section")) return "dark";
+      if (section.classList.contains("gallery-section")) return "dark";
       if (section.classList.contains("booking-cta")) return "dark";
       if (section.classList.contains("site-footer")) return "dark";
       return "light";

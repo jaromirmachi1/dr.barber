@@ -1,8 +1,8 @@
 import { useGalleryParallax } from "../hooks/useGalleryParallax";
 import { useMarqueePhysics } from "../hooks/useMarqueePhysics";
-import galleryInterior from "../assets/unnamed.jpg";
-import galleryDetail from "../assets/unnamed-2.jpg";
-import galleryWide from "../assets/2026-04-30.jpg";
+import galleryInterior from "../assets/gallery/vyska5.webp";
+import galleryDetail from "../assets/gallery/brb6.webp";
+import galleryWide from "../assets/gallery/brb9.webp";
 
 const galleryImages = [
   {

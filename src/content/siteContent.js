@@ -179,6 +179,60 @@ export const siteContent = {
         { label: "Signature", value: "Detail first" },
       ],
     },
+    gallery: {
+      kicker: "Galerie",
+      title: "Atmosféra salonu.",
+      lede:
+        "Detail, světlo a klid prostoru, ve kterém má každý střih svůj rytmus.",
+      ariaLabel: "Galerie fotografií salonu Doktor Barber",
+      hint: "Scrollujte dolů pro průchod galerií",
+      images: [
+        {
+          label: "Interiér",
+          alt: "Interiér salonu Doktor Barber v teplém světle",
+        },
+        {
+          label: "Křeslo",
+          alt: "Barberské křeslo v salonu Doktor Barber",
+        },
+        {
+          label: "Detail",
+          alt: "Detail vybavení a atmosféry salonu Doktor Barber",
+        },
+        {
+          label: "Rituál",
+          alt: "Barberský rituál a příprava klienta v salonu",
+        },
+        {
+          label: "Řemeslo",
+          alt: "Precizní barberské řemeslo v salonu Doktor Barber",
+        },
+        {
+          label: "Prostor",
+          alt: "Vertikální pohled na prostor salonu Doktor Barber",
+        },
+        {
+          label: "Světlo",
+          alt: "Teplé světlo a designové prvky salonu Doktor Barber",
+        },
+        {
+          label: "Kontury",
+          alt: "Detail práce s konturami a stylingem",
+        },
+        {
+          label: "Mood",
+          alt: "Luxusní atmosféra orientálního holičství Doktor Barber",
+        },
+        {
+          label: "Textury",
+          alt: "Materiály a textury interiéru salonu Doktor Barber",
+        },
+        {
+          label: "Finish",
+          alt: "Finální detail péče v salonu Doktor Barber",
+        },
+      ],
+    },
     booking: {
       title: "Připraven na novou kapitolu svého stylu?",
       cta: "BOOK US",
@@ -390,6 +444,60 @@ export const siteContent = {
         { label: "Google rating", value: "4.9 / 5" },
         { label: "Repeat clients", value: "82%" },
         { label: "Signature", value: "Detail first" },
+      ],
+    },
+    gallery: {
+      kicker: "Gallery",
+      title: "The salon atmosphere.",
+      lede:
+        "Detail, light, and calm space where every cut has its own rhythm.",
+      ariaLabel: "Doktor Barber salon photo gallery",
+      hint: "Scroll down to move through the gallery",
+      images: [
+        {
+          label: "Interior",
+          alt: "Warm-lit interior of Doktor Barber salon",
+        },
+        {
+          label: "Chair",
+          alt: "Barber chair inside Doktor Barber salon",
+        },
+        {
+          label: "Detail",
+          alt: "Detail of the equipment and atmosphere at Doktor Barber",
+        },
+        {
+          label: "Ritual",
+          alt: "Barber ritual and client preparation in the salon",
+        },
+        {
+          label: "Craft",
+          alt: "Precise barber craft at Doktor Barber salon",
+        },
+        {
+          label: "Space",
+          alt: "Vertical view of the Doktor Barber salon space",
+        },
+        {
+          label: "Light",
+          alt: "Warm light and design details in Doktor Barber salon",
+        },
+        {
+          label: "Lines",
+          alt: "Detail of line-up and styling work",
+        },
+        {
+          label: "Mood",
+          alt: "Luxury oriental barbershop atmosphere at Doktor Barber",
+        },
+        {
+          label: "Textures",
+          alt: "Interior materials and textures at Doktor Barber salon",
+        },
+        {
+          label: "Finish",
+          alt: "Final grooming detail at Doktor Barber salon",
+        },
       ],
     },
     booking: {
