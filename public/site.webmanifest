@@ -1,0 +1,22 @@
+{
+  "name": "Doktor Barber",
+  "short_name": "Doktor Barber",
+  "description": "Prémiové holičství a pánský grooming ateliér v Brně.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#030303",
+  "lang": "cs",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

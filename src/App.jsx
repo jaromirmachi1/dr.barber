@@ -8,6 +8,7 @@ import {
   useHeaderSurfaceTheme,
 } from "./hooks/useHeaderSurfaceTheme";
 import { useLenisSmoothScroll } from "./hooks/useLenisSmoothScroll";
+import { usePageSeo } from "./hooks/usePageSeo";
 import SiteHeader from "./sections/SiteHeader";
 import HeroSection from "./sections/HeroSection";
 import MarqueeSection from "./sections/MarqueeSection";
@@ -22,6 +23,7 @@ function App() {
   const [locale, setLocale] = useState("cs");
   const [menuOpen, setMenuOpen] = useState(false);
   useLenisSmoothScroll();
+  usePageSeo(locale);
   const headerOnDark = useHeaderSurfaceTheme();
   const bookOnDark = useBookFloatingSurfaceTheme();
   const t = siteContent[locale];
@@ -33,10 +35,6 @@ function App() {
     menuOpen,
   });
   const logoVisible = reducedMotion || Boolean(metrics?.showHeaderLogo);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
