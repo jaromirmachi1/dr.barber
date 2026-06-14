@@ -4,7 +4,8 @@
   color: #0d0d0d;
   isolation: isolate;
   --marquee-seam: clamp(0.42rem, 0.85vw, 0.68rem);
-  --marquee-inverted-band: clamp(4.25rem, 9vw, 5.75rem);
+  --marquee-inverted-band: clamp(5.5rem, 11vw, 7.75rem);
+  --marquee-gallery-offset: clamp(5rem, 11vw, 8.5rem);
 }
 
 .page::before {
@@ -760,15 +761,16 @@ main section:not(#hero):not(.marquee-strip) {
 .marquee-gallery-zone {
   position: relative;
   z-index: 1;
-  padding-top: 0;
+  padding-top: var(--marquee-gallery-offset);
+  padding-bottom: clamp(5rem, 9vw, 7.5rem);
   background:
     radial-gradient(
-      circle at 18% 22%,
+      circle at 18% 34%,
       rgba(200, 169, 110, 0.14),
       transparent 24rem
     ),
     radial-gradient(
-      circle at 80% 74%,
+      circle at 80% 78%,
       rgba(200, 169, 110, 0.1),
       transparent 28rem
     ),
@@ -817,8 +819,9 @@ main section:not(#hero):not(.marquee-strip) {
 
 .marquee-gallery {
   position: relative;
-  min-height: clamp(560px, 82vw, 780px);
+  min-height: clamp(820px, 108vw, 1020px);
   margin-top: 0;
+  padding-top: clamp(1.25rem, 2.5vw, 2.25rem);
   background: transparent;
   overflow: hidden;
 }
@@ -858,7 +861,7 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .marquee-gallery-card.is-primary {
-  top: clamp(1rem, 2.5vw, 2rem);
+  top: clamp(6.5rem, 12vw, 9.5rem);
   left: 50%;
   width: clamp(260px, 30vw, 440px);
   aspect-ratio: 0.72;
@@ -866,14 +869,14 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .marquee-gallery-card.is-left {
-  top: clamp(14rem, 30vw, 22rem);
+  top: clamp(20rem, 36vw, 28rem);
   left: clamp(1.25rem, 8vw, 7rem);
   width: clamp(280px, 38vw, 520px);
   aspect-ratio: 1.28;
 }
 
 .marquee-gallery-card.is-right {
-  top: clamp(20rem, 38vw, 30rem);
+  top: clamp(26rem, 44vw, 36rem);
   right: clamp(1.25rem, 8vw, 7rem);
   width: clamp(300px, 43vw, 620px);
   aspect-ratio: 1.52;
@@ -1866,24 +1869,29 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
     letter-spacing: -0.065em;
   }
 
+  .marquee-gallery-zone {
+    padding-top: clamp(4.5rem, 14vw, 7rem);
+  }
+
   .marquee-gallery {
-    min-height: 620px;
+    min-height: 860px;
+    padding-top: 1rem;
   }
 
   .marquee-gallery-card.is-primary {
-    top: 1.25rem;
+    top: 6rem;
     left: 50%;
     width: min(66vw, 300px);
   }
 
   .marquee-gallery-card.is-left {
-    top: 16rem;
+    top: 24rem;
     left: 1rem;
     width: min(72vw, 340px);
   }
 
   .marquee-gallery-card.is-right {
-    top: 24rem;
+    top: 30rem;
     right: 1rem;
     width: min(74vw, 360px);
   }
