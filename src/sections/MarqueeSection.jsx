@@ -1,5 +1,4 @@
 import { useGalleryParallax } from "../hooks/useGalleryParallax";
-import { useMarqueePhysics } from "../hooks/useMarqueePhysics";
 import galleryInterior from "../assets/gallery/vyska5.webp";
 import galleryDetail from "../assets/gallery/brb6.webp";
 import galleryWide from "../assets/gallery/brb9.webp";
@@ -22,24 +21,15 @@ const galleryImages = [
   },
 ];
 
-export default function MarqueeSection({ t }) {
-  const stripRef = useMarqueePhysics({ reverse: true });
+export default function MarqueeSection() {
   const galleryRef = useGalleryParallax();
 
   return (
     <section
-      ref={stripRef}
       className="marquee-strip"
       aria-label="Interior gallery and philosophy marquee"
     >
       <div className="marquee-gallery-zone">
-        <div className="marquee-row marquee-row--inverted">
-          <div className="marquee-track marquee-track--reverse">
-            {Array.from({ length: 12 }).map((_, index) => (
-              <span key={index}>{t.marqueeSecondary}</span>
-            ))}
-          </div>
-        </div>
         <div
           ref={galleryRef}
           className="marquee-gallery"

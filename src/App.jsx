@@ -17,11 +17,15 @@ import ServicesSection from "./sections/ServicesSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import GallerySection from "./sections/GallerySection";
 import LocationSection from "./sections/LocationSection";
+import BookingModal from "./components/BookingModal";
 import BookingClosure from "./sections/BookingClosure";
 
 function App() {
   const [locale, setLocale] = useState("cs");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const openBooking = () => setBookingOpen(true);
+  const closeBooking = () => setBookingOpen(false);
   useLenisSmoothScroll();
   usePageSeo(locale);
   const headerOnDark = useHeaderSurfaceTheme();
@@ -37,11 +41,12 @@ function App() {
   const logoVisible = reducedMotion || Boolean(metrics?.showHeaderLogo);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen || bookingOpen ? "hidden" : "";
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
+        setBookingOpen(false);
       }
     };
 
@@ -51,7 +56,7 @@ function App() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleEscape);
     };
-  }, [menuOpen]);
+  }, [menuOpen, bookingOpen]);
 
   return (
     <div className="page">
@@ -64,6 +69,7 @@ function App() {
         setMenuOpen={setMenuOpen}
         headerOnDark={headerOnDark}
         logoVisible={logoVisible}
+        onBook={openBooking}
       />
 
       <BrandLogoFlyout
@@ -74,7 +80,7 @@ function App() {
 
       <main>
         <HeroSection t={t} heroLogoRef={heroLogoRef} />
-        <MarqueeSection t={t} />
+        <MarqueeSection />
         <AboutSection t={t} />
         <ServicesSection t={t} />
         <TestimonialsSection t={t} />
@@ -82,14 +88,21 @@ function App() {
         <LocationSection t={t} />
       </main>
 
-      <BookingClosure t={t} />
+      <BookingClosure t={t} onBook={openBooking} />
 
-      <a
-        href="#booking"
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={closeBooking}
+        title={t.booking.modalTitle}
+      />
+
+      <button
+        type="button"
         className={`book-floating ${bookOnDark ? "book-floating--on-dark" : ""}`}
+        onClick={openBooking}
       >
         BOOK US
-      </a>
+      </button>
     </div>
   );
 }

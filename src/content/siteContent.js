@@ -235,6 +235,7 @@ export const siteContent = {
     booking: {
       title: "Připraven na novou kapitolu svého stylu?",
       cta: "BOOK US",
+      modalTitle: "Rezervace — Doktor Barber",
     },
     location: {
       kicker: "Naše",
@@ -501,6 +502,7 @@ export const siteContent = {
     booking: {
       title: "Ready for the next chapter of your style?",
       cta: "BOOK US",
+      modalTitle: "Reservation — Doktor Barber",
     },
     location: {
       kicker: "Our",

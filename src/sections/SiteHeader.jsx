@@ -8,7 +8,7 @@ const menuLinks = [
 ];
 
 const menuActions = [
-  { href: "#booking", key: "reservation", isPrimary: true },
+  { key: "reservation", isPrimary: true, opensBooking: true },
   {
     href: "https://www.instagram.com/doktorbarber/",
     key: "instagram",
@@ -30,6 +30,7 @@ const SiteHeader = forwardRef(function SiteHeader(
     setMenuOpen,
     headerOnDark,
     logoVisible = true,
+    onBook,
   },
   headerLogoRef,
 ) {
@@ -111,24 +112,42 @@ const SiteHeader = forwardRef(function SiteHeader(
               <ul className="menu-contact">
                 {menuActions.map((action) => (
                   <li key={action.key}>
-                    <a
-                      href={action.href}
-                      className={
-                        action.isPrimary
-                          ? "menu-contact__link menu-contact__link--primary"
-                          : "menu-contact__link"
-                      }
-                      onClick={!action.external ? closeMenu : undefined}
-                      target={action.external ? "_blank" : undefined}
-                      rel={action.external ? "noreferrer" : undefined}
-                    >
-                      <span className="menu-contact__label">
-                        {t.menu.actions[action.key]}
-                      </span>
-                      <small className="menu-contact__detail">
-                        {t.menu.actionDetails[action.key]}
-                      </small>
-                    </a>
+                    {action.opensBooking ? (
+                      <button
+                        type="button"
+                        className="menu-contact__link menu-contact__link--primary"
+                        onClick={() => {
+                          closeMenu();
+                          onBook?.();
+                        }}
+                      >
+                        <span className="menu-contact__label">
+                          {t.menu.actions[action.key]}
+                        </span>
+                        <small className="menu-contact__detail">
+                          {t.menu.actionDetails[action.key]}
+                        </small>
+                      </button>
+                    ) : (
+                      <a
+                        href={action.href}
+                        className={
+                          action.isPrimary
+                            ? "menu-contact__link menu-contact__link--primary"
+                            : "menu-contact__link"
+                        }
+                        onClick={!action.external ? closeMenu : undefined}
+                        target={action.external ? "_blank" : undefined}
+                        rel={action.external ? "noreferrer" : undefined}
+                      >
+                        <span className="menu-contact__label">
+                          {t.menu.actions[action.key]}
+                        </span>
+                        <small className="menu-contact__detail">
+                          {t.menu.actionDetails[action.key]}
+                        </small>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

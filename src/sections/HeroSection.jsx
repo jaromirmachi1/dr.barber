@@ -1,60 +1,60 @@
-import { useRef, useState } from 'react'
-import { useMarqueePhysics } from '../hooks/useMarqueePhysics'
-import vyska2 from '../assets/gallery/vyska2.webp'
-import vyska3 from '../assets/gallery/vyska3.webp'
-import vyska4 from '../assets/gallery/vyska4.webp'
-import vyska5 from '../assets/gallery/vyska5.webp'
-import vyska6 from '../assets/gallery/vyska6.webp'
+import { useRef, useState } from "react";
+import { useMarqueePhysics } from "../hooks/useMarqueePhysics";
+import vyska2 from "../assets/gallery/vyska2.webp";
+import vyska3 from "../assets/gallery/vyska3.webp";
+import vyska4 from "../assets/gallery/vyska4.webp";
+import vyska5 from "../assets/gallery/vyska5.webp";
+import vyska6 from "../assets/gallery/vyska6.webp";
 
 const heroCursorImages = [
   {
     src: vyska2,
-    alt: 'Doktor Barber — vertical salon interior',
+    alt: "Doktor Barber — vertical salon interior",
   },
   {
     src: vyska3,
-    alt: 'Doktor Barber — barber station detail',
+    alt: "Doktor Barber — barber station detail",
   },
   {
     src: vyska4,
-    alt: 'Doktor Barber — grooming space atmosphere',
+    alt: "Doktor Barber — grooming space atmosphere",
   },
   {
     src: vyska5,
-    alt: 'Doktor Barber — interior texture and light',
+    alt: "Doktor Barber — interior texture and light",
   },
   {
     src: vyska6,
-    alt: 'Doktor Barber — salon portrait view',
+    alt: "Doktor Barber — salon portrait view",
   },
-]
+];
 
 export default function HeroSection({ t, heroLogoRef }) {
-  const heroMarqueeRef = useMarqueePhysics()
-  const [heroActive, setHeroActive] = useState(false)
-  const [heroFrame, setHeroFrame] = useState(0)
-  const heroFrameRef = useRef(0)
+  const heroMarqueeRef = useMarqueePhysics();
+  const [heroActive, setHeroActive] = useState(false);
+  const [heroFrame, setHeroFrame] = useState(0);
+  const heroFrameRef = useRef(0);
 
   const handleHeroPointerMove = (event) => {
-    const hero = event.currentTarget
-    const { left, top } = hero.getBoundingClientRect()
-    const x = event.clientX - left
-    const y = event.clientY - top
+    const hero = event.currentTarget;
+    const { left, top } = hero.getBoundingClientRect();
+    const x = event.clientX - left;
+    const y = event.clientY - top;
     const nextFrame =
-      Math.abs(Math.floor((x + y) / 220)) % heroCursorImages.length
+      Math.abs(Math.floor((x + y) / 220)) % heroCursorImages.length;
 
-    hero.style.setProperty('--cursor-x', `${x}px`)
-    hero.style.setProperty('--cursor-y', `${y}px`)
+    hero.style.setProperty("--cursor-x", `${x}px`);
+    hero.style.setProperty("--cursor-y", `${y}px`);
 
     if (!heroActive) {
-      setHeroActive(true)
+      setHeroActive(true);
     }
 
     if (nextFrame !== heroFrameRef.current) {
-      heroFrameRef.current = nextFrame
-      setHeroFrame(nextFrame)
+      heroFrameRef.current = nextFrame;
+      setHeroFrame(nextFrame);
     }
-  }
+  };
 
   return (
     <section id="hero" className="hero-block">
@@ -64,12 +64,12 @@ export default function HeroSection({ t, heroLogoRef }) {
         onPointerLeave={() => setHeroActive(false)}
       >
         <div
-          className={`hero-cursor-gallery ${heroActive ? 'is-visible' : ''}`}
+          className={`hero-cursor-gallery ${heroActive ? "is-visible" : ""}`}
           aria-hidden="true"
         >
           {heroCursorImages.map((item, index) => (
             <div
-              className={`hero-frame ${heroFrame === index ? 'is-active' : ''}`}
+              className={`hero-frame ${heroFrame === index ? "is-active" : ""}`}
               key={item.src}
             >
               <img src={item.src} alt="" />
@@ -97,7 +97,14 @@ export default function HeroSection({ t, heroLogoRef }) {
             ))}
           </div>
         </div>
+        <div className="marquee-row marquee-row--inverted hero-marquee__inverted">
+          <div className="marquee-track marquee-track--reverse">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <span key={`secondary-${index}`}>{t.marqueeSecondary}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
-  )
+  );
 }

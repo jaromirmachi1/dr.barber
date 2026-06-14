@@ -4,6 +4,7 @@
   color: #0d0d0d;
   isolation: isolate;
   --marquee-seam: clamp(0.42rem, 0.85vw, 0.68rem);
+  --marquee-inverted-band: clamp(4.25rem, 9vw, 5.75rem);
 }
 
 .page::before {
@@ -203,7 +204,8 @@
   max-height: 100dvh;
   max-height: 100svh;
   box-sizing: border-box;
-  padding: clamp(6rem, 11vh, 9rem) clamp(1.5rem, 7vw, 7rem) clamp(2rem, 5vh, 3.5rem);
+  padding: clamp(6rem, 11vh, 9rem) clamp(1.5rem, 7vw, 7rem)
+    clamp(2rem, 5vh, 3.5rem);
   overflow-x: hidden;
   overflow-y: hidden;
   overscroll-behavior: contain;
@@ -239,7 +241,13 @@
     linear-gradient(90deg, rgba(245, 240, 232, 0.04) 1px, transparent 1px),
     linear-gradient(180deg, rgba(245, 240, 232, 0.035) 1px, transparent 1px);
   background-size: 5.5vw 5.5vw;
-  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 80%, transparent);
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 22%,
+    #000 80%,
+    transparent
+  );
   opacity: 0.4;
 }
 
@@ -379,6 +387,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
   padding: clamp(0.85rem, 1.4vw, 1.1rem) clamp(1rem, 1.6vw, 1.3rem);
   border: 1px solid rgba(245, 240, 232, 0.14);
   border-radius: var(--button-radius);
@@ -522,6 +535,11 @@ main section:not(#hero):not(.marquee-strip) {
 
 .hero-block {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 100svh;
+  max-height: 100svh;
   overflow: hidden;
   background:
     radial-gradient(
@@ -540,11 +558,12 @@ main section:not(#hero):not(.marquee-strip) {
 
 .hero-main {
   position: relative;
-  min-height: 100vh;
+  flex: 1 1 auto;
+  min-height: 0;
   display: grid;
   place-items: center;
   justify-content: center;
-  padding: 0 7vw;
+  padding: clamp(5rem, 9vh, 7rem) 7vw clamp(1rem, 2vh, 1.5rem);
   overflow: hidden;
   background: transparent;
   --cursor-x: 50%;
@@ -552,8 +571,10 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .hero-marquee {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  background: transparent;
   overflow: hidden;
 }
 
@@ -568,12 +589,16 @@ main section:not(#hero):not(.marquee-strip) {
   z-index: 2;
   display: grid;
   justify-items: center;
+  align-content: center;
   text-align: center;
-  gap: clamp(0.25rem, 0.9vh, 0.65rem);
+  gap: clamp(0.35rem, 1.2vh, 0.85rem);
+  width: 100%;
+  max-width: min(92vw, 56rem);
+  margin-inline: auto;
 }
 
 .hero-logo-anchor {
-  width: clamp(240px, 34vw, 420px);
+  width: clamp(260px, 36vw, 440px);
   aspect-ratio: 3.1 / 1;
 }
 
@@ -664,6 +689,9 @@ main section:not(#hero):not(.marquee-strip) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
   padding: 0.9rem 1.7rem;
   background: transparent;
   text-decoration: none;
@@ -682,6 +710,7 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .marquee-strip {
+  margin-top: 0;
   background: transparent;
   color: #f5f0e8;
   overflow: hidden;
@@ -696,6 +725,24 @@ main section:not(#hero):not(.marquee-strip) {
 /* Override .marquee-row (comes later in cascade): hero strip stays tight + seam matches inverted marquee */
 .marquee-row.marquee-row--hero {
   padding: var(--marquee-seam) 0;
+}
+
+.hero-marquee .marquee-row.marquee-row--hero {
+  padding: clamp(0.75rem, 1.6vw, 1.15rem) 0;
+  background: transparent;
+}
+
+.hero-marquee .marquee-row.marquee-row--inverted,
+.hero-marquee__inverted {
+  background: #0d0d0d;
+  padding-top: var(--marquee-seam);
+  padding-bottom: clamp(0.9rem, 1.8vw, 1.35rem);
+}
+
+.hero-marquee .marquee-row.marquee-row--inverted .marquee-track span,
+.hero-marquee__inverted .marquee-track span {
+  color: #f5f0e8;
+  -webkit-text-fill-color: #f5f0e8;
 }
 
 .marquee-gallery-zone {
@@ -744,19 +791,22 @@ main section:not(#hero):not(.marquee-strip) {
   overflow: hidden;
   margin-top: 0;
   padding-top: var(--marquee-seam);
-  padding-bottom: clamp(1.15rem, 2.4vw, 2rem);
-  background: transparent;
+  padding-bottom: clamp(0.9rem, 1.8vw, 1.35rem);
 }
 
-.marquee-row--inverted .marquee-track span {
+.marquee-row--gallery-lead {
+  background: #0d0d0d;
+}
+
+.marquee-row--gallery-lead .marquee-track span {
   color: #f5f0e8;
   -webkit-text-fill-color: #f5f0e8;
 }
 
 .marquee-gallery {
   position: relative;
-  min-height: clamp(820px, 126vw, 1200px);
-  margin-top: clamp(0.5rem, 2vw, 1.25rem);
+  min-height: clamp(560px, 82vw, 780px);
+  margin-top: 0;
   background: transparent;
   overflow: hidden;
 }
@@ -796,7 +846,7 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .marquee-gallery-card.is-primary {
-  top: clamp(5rem, 9vw, 8.5rem);
+  top: clamp(1rem, 2.5vw, 2rem);
   left: 50%;
   width: clamp(260px, 30vw, 440px);
   aspect-ratio: 0.72;
@@ -804,14 +854,14 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .marquee-gallery-card.is-left {
-  top: clamp(28rem, 55vw, 36rem);
+  top: clamp(14rem, 30vw, 22rem);
   left: clamp(1.25rem, 8vw, 7rem);
   width: clamp(280px, 38vw, 520px);
   aspect-ratio: 1.28;
 }
 
 .marquee-gallery-card.is-right {
-  top: clamp(36rem, 66vw, 45rem);
+  top: clamp(20rem, 38vw, 30rem);
   right: clamp(1.25rem, 8vw, 7rem);
   width: clamp(300px, 43vw, 620px);
   aspect-ratio: 1.52;
@@ -1295,18 +1345,16 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(
-      90deg,
-      rgba(245, 240, 232, 0.04) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      180deg,
-      rgba(245, 240, 232, 0.035) 1px,
-      transparent 1px
-    );
+    linear-gradient(90deg, rgba(245, 240, 232, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(245, 240, 232, 0.035) 1px, transparent 1px);
   background-size: 5.5vw 5.5vw;
-  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 18%,
+    #000 82%,
+    transparent
+  );
   opacity: 0.42;
 }
 
@@ -1348,7 +1396,6 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   line-height: 1.45;
 }
-
 
 .location-section {
   display: grid;
@@ -1594,9 +1641,12 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   position: fixed;
   right: 2.6rem;
   bottom: 1.65rem;
+  border: 1px solid rgba(13, 13, 13, 0.18);
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
   background: #0d0d0d;
   color: #f5f0e8;
-  border: 1px solid rgba(13, 13, 13, 0.18);
   padding: 0.83rem 1.7rem;
   text-decoration: none;
   letter-spacing: 0.03em;
@@ -1664,8 +1714,7 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
     height: 100svh;
     max-height: 100dvh;
     max-height: 100svh;
-    padding:
-      calc(4.25rem + env(safe-area-inset-top, 0px))
+    padding: calc(4.25rem + env(safe-area-inset-top, 0px))
       max(1rem, env(safe-area-inset-right, 0px))
       max(1rem, env(safe-area-inset-bottom, 0px))
       max(1rem, env(safe-area-inset-left, 0px));
@@ -1780,8 +1829,16 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
     }
   }
 
+  .hero-block {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+
   .hero-main {
     justify-items: start;
+    padding-top: clamp(4.5rem, 12vh, 5.5rem);
+    padding-inline: 1.25rem;
   }
 
   .hero-cursor-gallery {
@@ -1798,28 +1855,23 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   }
 
   .marquee-gallery {
-    min-height: 860px;
-  }
-
-  .marquee-gallery-title {
-    top: -0.08em;
-    white-space: normal;
+    min-height: 620px;
   }
 
   .marquee-gallery-card.is-primary {
-    top: 7rem;
+    top: 1.25rem;
     left: 50%;
     width: min(66vw, 300px);
   }
 
   .marquee-gallery-card.is-left {
-    top: 29rem;
+    top: 16rem;
     left: 1rem;
     width: min(72vw, 340px);
   }
 
   .marquee-gallery-card.is-right {
-    top: 40rem;
+    top: 24rem;
     right: 1rem;
     width: min(74vw, 360px);
   }
@@ -2001,6 +2053,8 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   .hamburger span,
   .book-floating,
   .menu-backdrop,
+  .booking-modal__backdrop,
+  .booking-modal__panel,
   .menu-panel,
   .menu-nav a,
   .menu-nav__arrow,

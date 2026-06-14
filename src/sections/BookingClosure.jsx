@@ -2,7 +2,7 @@ import SectionBeamsBackground from "../components/SectionBeamsBackground";
 import BookingSection from "./BookingSection";
 import SiteFooter from "./SiteFooter";
 
-export default function BookingClosure({ t }) {
+export default function BookingClosure({ t, onBook }) {
   return (
     <div className="booking-closure">
       <div
@@ -11,7 +11,7 @@ export default function BookingClosure({ t }) {
       >
         <SectionBeamsBackground />
       </div>
-      <BookingSection t={t} />
+      <BookingSection t={t} onBook={onBook} />
       <SiteFooter t={t} />
     </div>
   );

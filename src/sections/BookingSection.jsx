@@ -1,10 +1,10 @@
-export default function BookingSection({ t }) {
+export default function BookingSection({ t, onBook }) {
   return (
     <section id="booking" className="booking-cta booking-section">
       <h2>{t.booking.title}</h2>
-      <a href="#" className="cta-button secondary">
+      <button type="button" className="cta-button secondary" onClick={onBook}>
         {t.booking.cta}
-      </a>
+      </button>
     </section>
   )
 }
