@@ -554,10 +554,13 @@ main section:not(#hero):not(.marquee-strip) {
     ),
     #f5f0e8;
   color: #0d0d0d;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
 }
 
 .hero-main {
   position: relative;
+  z-index: 2;
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
@@ -566,11 +569,11 @@ main section:not(#hero):not(.marquee-strip) {
   padding: clamp(5rem, 9vh, 7rem) 7vw clamp(1rem, 2vh, 1.5rem);
   overflow: hidden;
   background: transparent;
-  --cursor-x: 50%;
-  --cursor-y: 50%;
 }
 
 .hero-marquee {
+  position: relative;
+  z-index: 3;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -728,12 +731,21 @@ main section:not(#hero):not(.marquee-strip) {
 }
 
 .hero-marquee .marquee-row.marquee-row--hero {
+  position: relative;
+  z-index: 1;
   padding: clamp(0.75rem, 1.6vw, 1.15rem) 0;
   background: transparent;
 }
 
+.hero-marquee .marquee-row.marquee-row--hero .marquee-track {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-marquee .marquee-row.marquee-row--inverted,
 .hero-marquee__inverted {
+  position: relative;
+  z-index: 2;
   background: #0d0d0d;
   padding-top: var(--marquee-seam);
   padding-bottom: clamp(0.9rem, 1.8vw, 1.35rem);

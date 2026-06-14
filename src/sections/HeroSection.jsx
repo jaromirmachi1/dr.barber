@@ -36,15 +36,18 @@ export default function HeroSection({ t, heroLogoRef }) {
   const heroFrameRef = useRef(0);
 
   const handleHeroPointerMove = (event) => {
-    const hero = event.currentTarget;
-    const { left, top } = hero.getBoundingClientRect();
+    const heroMain = event.currentTarget;
+    const heroBlock = heroMain.parentElement;
+    if (!heroBlock) return;
+
+    const { left, top } = heroBlock.getBoundingClientRect();
     const x = event.clientX - left;
     const y = event.clientY - top;
     const nextFrame =
       Math.abs(Math.floor((x + y) / 220)) % heroCursorImages.length;
 
-    hero.style.setProperty("--cursor-x", `${x}px`);
-    hero.style.setProperty("--cursor-y", `${y}px`);
+    heroBlock.style.setProperty("--cursor-x", `${x}px`);
+    heroBlock.style.setProperty("--cursor-y", `${y}px`);
 
     if (!heroActive) {
       setHeroActive(true);
@@ -59,23 +62,24 @@ export default function HeroSection({ t, heroLogoRef }) {
   return (
     <section id="hero" className="hero-block">
       <div
+        className={`hero-cursor-gallery ${heroActive ? "is-visible" : ""}`}
+        aria-hidden="true"
+      >
+        {heroCursorImages.map((item, index) => (
+          <div
+            className={`hero-frame ${heroFrame === index ? "is-active" : ""}`}
+            key={item.src}
+          >
+            <img src={item.src} alt="" />
+          </div>
+        ))}
+      </div>
+
+      <div
         className="hero-main"
         onPointerMove={handleHeroPointerMove}
         onPointerLeave={() => setHeroActive(false)}
       >
-        <div
-          className={`hero-cursor-gallery ${heroActive ? "is-visible" : ""}`}
-          aria-hidden="true"
-        >
-          {heroCursorImages.map((item, index) => (
-            <div
-              className={`hero-frame ${heroFrame === index ? "is-active" : ""}`}
-              key={item.src}
-            >
-              <img src={item.src} alt="" />
-            </div>
-          ))}
-        </div>
         <div className="hero-content">
           <div
             ref={heroLogoRef}
