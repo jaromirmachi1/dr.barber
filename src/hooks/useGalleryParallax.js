@@ -17,6 +17,9 @@ export function useGalleryParallax() {
     const right = gallery.querySelector('.marquee-gallery-card.is-right')
     if (!left || !right) return
 
+    const mobileQuery = window.matchMedia('(max-width: 900px)')
+    const sideTravel = () => (mobileQuery.matches ? 180 : SIDE_TRAVEL)
+
     let rafId = 0
     let scheduled = false
     let startY = 0
@@ -40,7 +43,7 @@ export function useGalleryParallax() {
         1,
       )
 
-      const sideOffset = progress * SIDE_TRAVEL
+      const sideOffset = progress * sideTravel()
 
       left.style.transform = `translate3d(0, ${-sideOffset}px, 0)`
       right.style.transform = `translate3d(0, ${-sideOffset}px, 0)`
