@@ -88,10 +88,12 @@
 
 .brand-logo-flyout {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 22;
   margin: 0;
   line-height: 0;
-  transform: translateZ(0);
+  will-change: transform;
 }
 
 .brand-logo-flyout img {
@@ -850,6 +852,7 @@ main section:not(#hero):not(.marquee-strip) {
   overflow: hidden;
   background: #111;
   box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+  backface-visibility: hidden;
 }
 
 .marquee-gallery-card img {
@@ -1710,6 +1713,25 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
 }
 
 @media (max-width: 900px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    overscroll-behavior-y: none;
+    touch-action: pan-y;
+  }
+
+  .marquee-gallery-card.is-left,
+  .marquee-gallery-card.is-right {
+    will-change: transform;
+  }
+
+  .gallery-pin__viewport,
+  .marquee-gallery {
+    contain: layout paint;
+  }
+
   main section:not(#hero):not(.marquee-strip) {
     padding: 5rem 1.25rem;
   }
@@ -1783,7 +1805,27 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   .menu-nav__arrow {
     opacity: 1;
     transform: none;
-    font-size: 1rem;
+    font-size: 0;
+    line-height: 0;
+    width: 0.875rem;
+    height: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-nav__arrow::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 1.5px solid rgba(226, 185, 106, 0.7);
+    border-right: 1.5px solid rgba(226, 185, 106, 0.7);
+    transform: rotate(45deg);
+  }
+
+  .menu-nav a:hover .menu-nav__arrow::before,
+  .menu-nav a:focus-visible .menu-nav__arrow::before {
+    border-color: #e2b96a;
   }
 
   .menu-aside {

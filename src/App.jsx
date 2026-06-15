@@ -101,7 +101,7 @@ function App() {
         className={`book-floating ${bookOnDark ? "book-floating--on-dark" : ""}`}
         onClick={openBooking}
       >
-        BOOK US
+        {t.booking.cta}
       </button>
     </div>
   );

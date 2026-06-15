@@ -234,7 +234,7 @@ export const siteContent = {
     },
     booking: {
       title: "Připraven na novou kapitolu svého stylu?",
-      cta: "BOOK US",
+      cta: "Rezervovat",
       modalTitle: "Rezervace — Doktor Barber",
     },
     location: {

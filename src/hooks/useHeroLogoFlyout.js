@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { subscribeLenisScroll } from './useLenisScroll'
+import { isMobileViewport } from '../utils/viewport'
+import { createScrollFrameListener } from '../utils/scrollFrame'
 
 const SCROLL_DISTANCE = () => Math.min(window.innerHeight * 0.58, 720)
 
@@ -13,6 +15,18 @@ function lerp(start, end, amount) {
 
 function getScrollY() {
   return window.scrollY || document.documentElement.scrollTop || 0
+}
+
+function metricsChanged(current, next, threshold = 0.75) {
+  if (!current) return true
+
+  return (
+    Math.abs(current.left - next.left) >= threshold ||
+    Math.abs(current.top - next.top) >= threshold ||
+    Math.abs(current.width - next.width) >= threshold ||
+    current.showHeaderLogo !== next.showHeaderLogo ||
+    current.showFlyout !== next.showFlyout
+  )
 }
 
 export function useHeroLogoFlyout({ heroAnchorRef, headerAnchorRef, menuOpen }) {
@@ -36,14 +50,18 @@ export function useHeroLogoFlyout({ heroAnchorRef, headerAnchorRef, menuOpen }) 
       const progress = easeOutCubic(rawProgress)
       const showHeaderLogo = menuOpen || progress >= 0.995
 
-      setMetrics({
+      const next = {
         left: lerp(heroRect.left, headerRect.left, progress),
         top: lerp(heroRect.top, headerRect.top, progress),
         width: lerp(heroRect.width, headerRect.width, progress),
         progress,
         showHeaderLogo,
         showFlyout: !menuOpen && progress < 0.995,
-      })
+      }
+
+      setMetrics((current) =>
+        metricsChanged(current, next) ? next : current,
+      )
     }
 
     const handleScroll = (scrollY) => {
@@ -52,15 +70,20 @@ export function useHeroLogoFlyout({ heroAnchorRef, headerAnchorRef, menuOpen }) 
 
     const handleResize = () => handleScroll()
 
+    const onScroll = isMobileViewport()
+      ? createScrollFrameListener(handleScroll)
+      : handleScroll
+
     const unsubLenis = subscribeLenisScroll(handleScroll)
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', handleResize)
 
     const frame = requestAnimationFrame(() => handleScroll())
 
     return () => {
       unsubLenis()
-      window.removeEventListener('scroll', handleScroll)
+      onScroll.cancel?.()
+      window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', handleResize)
       cancelAnimationFrame(frame)
     }

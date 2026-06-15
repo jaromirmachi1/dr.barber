@@ -1,19 +1,57 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { isMobileViewport } from '../utils/viewport'
 
-const TESTIMONIALS_PER_PAGE = 3
+const DESKTOP_TESTIMONIALS_PER_PAGE = 3
+const MOBILE_TESTIMONIALS_PER_PAGE = 2
 
-export default function TestimonialsSection({ t }) {
-  const [activePage, setActivePage] = useState(0)
-  const testimonialPages = useMemo(() => {
-    const pages = []
+function useTestimonialsPerPage() {
+  const [perPage, setPerPage] = useState(() =>
+    isMobileViewport()
+      ? MOBILE_TESTIMONIALS_PER_PAGE
+      : DESKTOP_TESTIMONIALS_PER_PAGE,
+  )
 
-    for (let i = 0; i < t.testimonials.list.length; i += TESTIMONIALS_PER_PAGE) {
-      pages.push(t.testimonials.list.slice(i, i + TESTIMONIALS_PER_PAGE))
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 900px)')
+    const sync = () => {
+      setPerPage(
+        query.matches
+          ? MOBILE_TESTIMONIALS_PER_PAGE
+          : DESKTOP_TESTIMONIALS_PER_PAGE,
+      )
     }
 
-    return pages
-  }, [t.testimonials.list])
-  const visibleTestimonials = testimonialPages[activePage] ?? testimonialPages[0] ?? []
+    sync()
+    query.addEventListener('change', sync)
+    return () => query.removeEventListener('change', sync)
+  }, [])
+
+  return perPage
+}
+
+function buildPages(list, perPage) {
+  const pages = []
+
+  for (let i = 0; i < list.length; i += perPage) {
+    pages.push(list.slice(i, i + perPage))
+  }
+
+  return pages
+}
+
+export default function TestimonialsSection({ t }) {
+  const testimonialsPerPage = useTestimonialsPerPage()
+  const [activePage, setActivePage] = useState(0)
+  const testimonialPages = useMemo(
+    () => buildPages(t.testimonials.list, testimonialsPerPage),
+    [t.testimonials.list, testimonialsPerPage],
+  )
+  const visibleTestimonials =
+    testimonialPages[activePage] ?? testimonialPages[0] ?? []
+
+  useEffect(() => {
+    setActivePage((page) => Math.min(page, Math.max(testimonialPages.length - 1, 0)))
+  }, [testimonialPages.length])
 
   return (
     <section

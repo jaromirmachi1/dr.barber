@@ -2,10 +2,12 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { notifyLenisScroll } from './useLenisScroll'
+import { isMobileViewport } from '../utils/viewport'
 
 export function useLenisSmoothScroll() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (isMobileViewport()) return
 
     const lenis = new Lenis({
       autoRaf: true,

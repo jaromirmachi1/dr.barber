@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { isMobileViewport } from '../utils/viewport'
 
 export function useMarqueePhysics(options = {}) {
   const { reverse = false } = options
@@ -11,7 +12,7 @@ export function useMarqueePhysics(options = {}) {
 
     const tracks = [...strip.querySelectorAll('.marquee-track')]
     const positions = new Array(tracks.length).fill(0)
-    const baseSpeed = 0.28
+    const baseSpeed = isMobileViewport() ? 0.22 : 0.28
     const scrollBoostGain = 2.2
     let currentBoost = 0
     let targetBoost = 0
@@ -45,6 +46,8 @@ export function useMarqueePhysics(options = {}) {
     }
 
     const onScroll = () => {
+      if (isMobileViewport()) return
+
       const y = window.scrollY
       const dy = Math.abs(y - lastY)
       lastY = y

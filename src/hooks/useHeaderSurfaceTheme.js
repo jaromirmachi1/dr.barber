@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { isMobileViewport } from "../utils/viewport";
+import { createScrollFrameListener } from "../utils/scrollFrame";
 
 /** Viewport Y (px from top) — band where the fixed header sits over content */
 const HEADER_PROBE_Y = 52;
@@ -35,14 +37,21 @@ function useSurfaceTheme(probeY) {
 
   useEffect(() => {
     const update = () => {
-      setOnDark(getSurfaceThemeAt(probeY()) === "dark");
+      const nextOnDark = getSurfaceThemeAt(probeY()) === "dark";
+      setOnDark((current) => (current === nextOnDark ? current : nextOnDark));
     };
 
     update();
-    window.addEventListener("scroll", update, { passive: true });
+
+    const onScroll = isMobileViewport()
+      ? createScrollFrameListener(update)
+      : update;
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", update);
+      onScroll.cancel?.();
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
     };
   }, [probeY]);

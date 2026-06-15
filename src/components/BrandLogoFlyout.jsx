@@ -13,9 +13,8 @@ export default function BrandLogoFlyout({ metrics, headerOnDark, reducedMotion }
       className={`brand-logo-flyout ${onDark ? 'brand-logo-flyout--on-dark' : ''}`}
       aria-label="Doktor Barber home"
       style={{
-        left: `${metrics.left}px`,
-        top: `${metrics.top}px`,
         width: `${metrics.width}px`,
+        transform: `translate3d(${metrics.left}px, ${metrics.top}px, 0)`,
       }}
     >
       <img src={logo} alt="" />
