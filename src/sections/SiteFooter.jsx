@@ -7,10 +7,16 @@ export default function SiteFooter({ t }) {
       <div className="site-footer__main">
         <img src={logo} alt="Doktor Barber logo" className="site-footer__brand" />
         <UiTherapyCredit className="uityherapy-credit--footer" tone="white" />
-        <nav aria-label="Social links">
-          {t.footer.socials.map((social) => (
-            <a href="#" key={social}>
-              {social}
+        <nav aria-label="Footer links">
+          {t.footer.links.map((link) => (
+            <a
+              href={link.href}
+              key={link.label}
+              {...(link.external
+                ? { target: '_blank', rel: 'noreferrer' }
+                : {})}
+            >
+              {link.label}
             </a>
           ))}
         </nav>
