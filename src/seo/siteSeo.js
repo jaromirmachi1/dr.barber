@@ -13,7 +13,7 @@ export const business = {
   telephone: '+420 774 034 077',
   phoneHref: '+420774034077',
   email: null,
-  instagram: 'https://www.instagram.com/doktorbarber/',
+  instagram: 'https://www.instagram.com/doktorbarber2026/',
   googleMaps:
     'https://www.google.com/maps/search/?api=1&query=Jarmily%20Kurandov%C3%A9%208%2C%20612%2000%20Brno-Kr%C3%A1lovo%20Pole',
   geo: {

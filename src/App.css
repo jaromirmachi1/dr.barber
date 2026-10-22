@@ -1655,6 +1655,32 @@ main section.gallery-section:not(#hero):not(.marquee-strip) {
   font-size: 0.9rem;
 }
 
+.site-footer__operator {
+  margin: 1.15rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem 0.75rem;
+  color: rgba(245, 240, 232, 0.55);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+.site-footer__operator a {
+  color: rgba(245, 240, 232, 0.72);
+  text-decoration: none;
+  transition: color 180ms ease-out;
+}
+
+.site-footer__operator a:hover {
+  color: #c8a96e;
+}
+
+.site-footer__operator a:active {
+  transform: scale(0.99);
+}
+
 .book-floating {
   position: fixed;
   right: 2.6rem;

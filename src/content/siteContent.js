@@ -262,10 +262,14 @@ export const siteContent = {
     },
     footer: {
       address: "Doktor Barber, Jarmily Kurandové 8, Brno",
+      operatorLabel: "Provozovatel webu",
+      operatorName: "Thaer H. A. Awawda",
+      operatorIco: "IČO 23422882",
+      operatorHref: "/kontakt",
       links: [
         {
           label: "Instagram",
-          href: "https://www.instagram.com/doktorbarber/",
+          href: "https://www.instagram.com/doktorbarber2026/",
           external: true,
         },
         { label: "GDPR", href: "/gdpr" },
@@ -285,6 +289,7 @@ export const siteContent = {
       },
       fields: {
         businessName: "Obchodní firma",
+        legalForm: "Právní forma",
         ico: "IČO",
         established: "Datum vzniku",
         registeredAddress: "Adresa sídla",
@@ -295,15 +300,16 @@ export const siteContent = {
       },
       values: {
         businessName: "Thaer H. A. Awawda",
+        legalForm: "Zahraniční fyzická osoba",
         ico: "23422882",
         established: "17. 6. 2025",
-        registeredAddress: "Erbenova 372/5, Brno-Černá Pole",
-        activity: "Kadeřnické a holičské činnosti",
+        registeredAddress: "Erbenova 372/5, 602 00 Brno",
+        activity: "96020 Kadeřnické, kosmetické a podobné činnosti",
         taxOffice: "Finanční úřad Brno III",
       },
-      aresNote: "Údaje dle veřejného registru RES (ARES).",
-      aresLink: "https://rejstrik.penize.cz/ares/23422882-thaer-h-a-awawda",
-      aresLinkLabel: "Zobrazit v ARES",
+      aresNote: "Údaje dle veřejného registru ekonomických subjektů (RES).",
+      aresLink: "https://verejnedata.com/firma/thaer-h-a-awawda-23422882",
+      aresLinkLabel: "Zobrazit ve veřejném registru",
     },
     gdpr: {
       seoTitle: "Ochrana osobních údajů | Doktor Barber",
@@ -319,7 +325,7 @@ export const siteContent = {
           id: "gdpr-controller",
           title: "Správce osobních údajů",
           paragraphs: [
-            "Správcem osobních údajů je Thaer H. A. Awawda, IČO 23422882, se sídlem Erbenova 372/5, Brno-Černá Pole (provozovna salonu: Jarmily Kurandové 8, Brno-Královo Pole).",
+            "Správcem osobních údajů je Thaer H. A. Awawda, IČO 23422882, se sídlem Erbenova 372/5, 602 00 Brno (provozovna salonu: Jarmily Kurandové 8, Brno-Královo Pole).",
           ],
         },
         {
@@ -620,10 +626,14 @@ export const siteContent = {
     },
     footer: {
       address: "Doktor Barber, Jarmily Kurandové 8, Brno",
+      operatorLabel: "Website operator",
+      operatorName: "Thaer H. A. Awawda",
+      operatorIco: "Company ID 23422882",
+      operatorHref: "/kontakt",
       links: [
         {
           label: "Instagram",
-          href: "https://www.instagram.com/doktorbarber/",
+          href: "https://www.instagram.com/doktorbarber2026/",
           external: true,
         },
         { label: "GDPR", href: "/gdpr" },
@@ -643,6 +653,7 @@ export const siteContent = {
       },
       fields: {
         businessName: "Business name",
+        legalForm: "Legal form",
         ico: "Company ID (IČO)",
         established: "Date established",
         registeredAddress: "Registered address",
@@ -653,15 +664,16 @@ export const siteContent = {
       },
       values: {
         businessName: "Thaer H. A. Awawda",
+        legalForm: "Foreign natural person",
         ico: "23422882",
         established: "17 June 2025",
-        registeredAddress: "Erbenova 372/5, Brno-Černá Pole",
-        activity: "Hairdressing and barber services",
+        registeredAddress: "Erbenova 372/5, 602 00 Brno",
+        activity: "96020 Hairdressing, cosmetic and similar activities",
         taxOffice: "Finanční úřad Brno III",
       },
-      aresNote: "Data from the public RES (ARES) registry.",
-      aresLink: "https://rejstrik.penize.cz/ares/23422882-thaer-h-a-awawda",
-      aresLinkLabel: "View in ARES",
+      aresNote: "Data from the public register of economic entities (RES).",
+      aresLink: "https://verejnedata.com/firma/thaer-h-a-awawda-23422882",
+      aresLinkLabel: "View in public registry",
     },
     gdpr: {
       seoTitle: "Privacy Policy | Doktor Barber",
@@ -677,7 +689,7 @@ export const siteContent = {
           id: "gdpr-controller",
           title: "Data controller",
           paragraphs: [
-            "The data controller is Thaer H. A. Awawda, Company ID 23422882, registered at Erbenova 372/5, Brno-Černá Pole (salon location: Jarmily Kurandové 8, Brno-Královo Pole).",
+            "The data controller is Thaer H. A. Awawda, Company ID 23422882, registered at Erbenova 372/5, 602 00 Brno (salon location: Jarmily Kurandové 8, Brno-Královo Pole).",
           ],
         },
         {

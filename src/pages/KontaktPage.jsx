@@ -32,6 +32,10 @@ export default function KontaktPage() {
               <dd>{k.values.businessName}</dd>
             </div>
             <div>
+              <dt>{k.fields.legalForm}</dt>
+              <dd>{k.values.legalForm}</dd>
+            </div>
+            <div>
               <dt>{k.fields.ico}</dt>
               <dd>{k.values.ico}</dd>
             </div>

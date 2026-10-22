@@ -10,7 +10,7 @@ const menuLinks = [
 const menuActions = [
   { key: "reservation", isPrimary: true, opensBooking: true },
   {
-    href: "https://www.instagram.com/doktorbarber/",
+    href: "https://www.instagram.com/doktorbarber2026/",
     key: "instagram",
     external: true,
   },
